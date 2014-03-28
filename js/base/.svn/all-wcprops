@@ -1,0 +1,59 @@
+K 25
+svn:wc:ra_dav:version-url
+V 72
+/repos/htdocs233_repo/!svn/ver/507717/mypoco/hotbed/webapp_frame/js/base
+END
+backbone.js
+K 25
+svn:wc:ra_dav:version-url
+V 84
+/repos/htdocs233_repo/!svn/ver/507716/mypoco/hotbed/webapp_frame/js/base/backbone.js
+END
+base_package.js
+K 25
+svn:wc:ra_dav:version-url
+V 88
+/repos/htdocs233_repo/!svn/ver/507716/mypoco/hotbed/webapp_frame/js/base/base_package.js
+END
+ua.js
+K 25
+svn:wc:ra_dav:version-url
+V 78
+/repos/htdocs233_repo/!svn/ver/507716/mypoco/hotbed/webapp_frame/js/base/ua.js
+END
+iscroll.js
+K 25
+svn:wc:ra_dav:version-url
+V 83
+/repos/htdocs233_repo/!svn/ver/507716/mypoco/hotbed/webapp_frame/js/base/iscroll.js
+END
+mustache.js
+K 25
+svn:wc:ra_dav:version-url
+V 84
+/repos/htdocs233_repo/!svn/ver/507716/mypoco/hotbed/webapp_frame/js/base/mustache.js
+END
+underscore.js
+K 25
+svn:wc:ra_dav:version-url
+V 86
+/repos/htdocs233_repo/!svn/ver/507716/mypoco/hotbed/webapp_frame/js/base/underscore.js
+END
+cookies.js
+K 25
+svn:wc:ra_dav:version-url
+V 83
+/repos/htdocs233_repo/!svn/ver/507716/mypoco/hotbed/webapp_frame/js/base/cookies.js
+END
+zepto.js
+K 25
+svn:wc:ra_dav:version-url
+V 81
+/repos/htdocs233_repo/!svn/ver/507716/mypoco/hotbed/webapp_frame/js/base/zepto.js
+END
+hammer.jq.js
+K 25
+svn:wc:ra_dav:version-url
+V 85
+/repos/htdocs233_repo/!svn/ver/507717/mypoco/hotbed/webapp_frame/js/base/hammer.jq.js
+END
