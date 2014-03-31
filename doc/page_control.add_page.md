@@ -92,4 +92,4 @@ define(function(require, exports)
 ```
 
   [1]: http://www.css88.com/doc/backbone/#Router
-  [2]: https://www.zybuluo.com/mansonchor/note/5894
+  [2]: https://github.com/mansonchor/mobile_web_frame/blob/master/doc/page.new_page.md

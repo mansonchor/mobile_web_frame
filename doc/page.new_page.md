@@ -80,8 +80,8 @@ options.events = {
 例如：手机横竖屏变化、某些浏览器导航条的折叠等，都会引发
 
 
-  [1]: http://my.poco.cn/hotbed/webapp_frame/demo/transition_type.html
+  [1]: http://www.mansonchor.com/mobile_web_frame/demo/transition_type.html
   [2]: http://documentcloud.github.io/backbone/#View-extend
   [3]: http://eightmedia.github.io/hammer.js/
-  [4]: http://my.poco.cn/hotbed/webapp_frame/demo/events.html
-  [5]: http://my.poco.cn/hotbed/webapp_frame/demo/page_function.html
+  [4]: http://www.mansonchor.com/mobile_web_frame/demo/events.html
+  [5]: http://www.mansonchor.com/mobile_web_frame/demo/page_function.html
