@@ -128,7 +128,7 @@ seajs.use(["base_package","frame_package"],function()
 页面配置路由后，可以通过访问不同的Hash片段来访问不同的页面，它是路由响应的入口，占据整个活动区域，呈现内容并提供交互。每个页面中可包含多个视图。每一次导航操作，会让当前页面退出可视区域，让下一个页面进入。
 
 
-| [new_page( options )](https://www.zybuluo.com/mansonchor/note/5894)  新建一个页面 |
+| [new_page( options )](https://github.com/mansonchor/mobile_web_frame/blob/master/doc/page.new_page.md)  新建一个页面 |
 | - |
 
 
@@ -139,20 +139,20 @@ seajs.use(["base_package","frame_package"],function()
 
 
 
-| [init( container , [options] )](https://www.zybuluo.com/mansonchor/note/5831)  初始化一个页面控制器 |
+| [init( container , [options] )](https://github.com/mansonchor/mobile_web_frame/blob/master/doc/page_control.init.md)  初始化一个页面控制器 |
 | - |
 
-| [add_page( page_controler )](https://www.zybuluo.com/mansonchor/note/5888)  往控制器添加一个页面 |
+| [add_page( page_controler )](https://github.com/mansonchor/mobile_web_frame/blob/master/doc/page_control.add_page.md)  往控制器添加一个页面 |
 | - |
 
-| [route_start( )](https://www.zybuluo.com/mansonchor/note/5891)  开始进行路由监听 |
+| [route_start( )](https://github.com/mansonchor/mobile_web_frame/blob/master/doc/page_control.route_start.md)  开始进行路由监听 |
 | - |
 
-| [navigate_to_page( page , [state] , [replace] , [transition] )](https://www.zybuluo.com/mansonchor/note/6717)  路由到指定页面 |
+| [navigate_to_page( page , [state] , [replace] , [transition] )](https://github.com/mansonchor/mobile_web_frame/blob/master/doc/page_control.navigate_to_page.md)  路由到指定页面 |
 | - |
 
-| [back( )](https://www.zybuluo.com/mansonchor/note/6785)  返回上一页面 |
+| [back( )](https://github.com/mansonchor/mobile_web_frame/blob/master/doc/page_control.back.md)  返回上一页面 |
 | - |
 
-| [return_current_page_view( )](https://www.zybuluo.com/mansonchor/note/6788)  返回当前页面的视图对象 |
+| [return_current_page_view( )](https://github.com/mansonchor/mobile_web_frame/blob/master/doc/page_control.return_current_page_view.md)  返回当前页面的视图对象 |
 | - |
