@@ -1,5 +1,5 @@
 [TOC]
-#POCO Web App开发指南
+#Mobile web frame开发指南
 
 ##1.使用Web App的条件和背景
 
@@ -11,10 +11,10 @@ web app的核心价值：**web的开发模式 + app的功能&体验**
 
 这样我们在开发的时候，首先就要考虑整个产品架构，是否适合做成web app模式。它和PC web最直接的区别在于功能层面，web app更侧重于实现移动设备某些特定的功能和需求
 
-##2.POCO Web App解决方案
+##2.Mobile web frame解决方案
 ###2.1 解决了什么？
 
-POCO Web App解决方案是一个高效、实用的webapp统一解决方案，它旨在提供
+Mobile Web App解决方案是一个高效、实用的webapp统一解决方案，它旨在提供
 
 - 页面构建和应用路由
 - 页面转换控制和页面转场效果
@@ -39,7 +39,7 @@ POCO Web App解决方案是一个高效、实用的webapp统一解决方案，�
 `iscroll`:业内最好的web模拟原生滚动体验的库，没有之一
 `mustache`:前端template渲染模板库，这类型的库很多，可自由选择
 
-了解和熟悉上面的js类库，有助于更好的使用POCO Web App方案进行开发
+了解和熟悉上面的js类库，有助于更好的使用Mobile Web App方案进行开发
 
 ####2.2.2 文件结构
 在项目根目录下的一般文件结构，以webapp_frame为例：
@@ -119,7 +119,7 @@ seajs.use(["base_package","frame_package"],function()
     alert('调用成功')
 })
 ```
-使用框架开发准备工作至此，[看DEMO猛点我](http://my.poco.cn/hotbed/webapp_frame/demo/prepare.html)
+使用框架开发准备工作至此，[看DEMO猛点我](http://www.mansonchor.com/mobile_web_frame/demo/prepare.html)
 
 ###2.3 使用说明
 ####2.3.1 页面
@@ -127,7 +127,7 @@ seajs.use(["base_package","frame_package"],function()
 
 页面配置路由后，可以通过访问不同的Hash片段来访问不同的页面，它是路由响应的入口，占据整个活动区域，呈现内容并提供交互。每个页面中可包含多个视图。每一次导航操作，会让当前页面退出可视区域，让下一个页面进入。
 
-- [**new_page( options )**](https://www.zybuluo.com/mansonchor/note/5894)  **新建一个页面** 
+- [**new_page( options )**](https://github.com/mansonchor/mobile_web_frame/blob/master/doc/page.new_page.md)  **新建一个页面** 
 
 
 ####2.3.2 页面控制器
@@ -137,14 +137,14 @@ seajs.use(["base_package","frame_package"],function()
 
 
 
-- [**init( container , [options] )**](https://www.zybuluo.com/mansonchor/note/5831)  **初始化一个页面控制器**
+- [**init( container , [options] )**](https://github.com/mansonchor/mobile_web_frame/blob/master/doc/page.init.md)  **初始化一个页面控制器**
 
-- [**add_page( page_controler )**](https://www.zybuluo.com/mansonchor/note/5888)  **往控制器添加一个页面**
+- [**add_page( page_controler )**](https://github.com/mansonchor/mobile_web_frame/blob/master/doc/page_control.add_page.md)  **往控制器添加一个页面**
 
-- [**route_start( )**](https://www.zybuluo.com/mansonchor/note/5891)  **开始进行路由监听**
+- [**route_start( )**](https://github.com/mansonchor/mobile_web_frame/blob/master/doc/page_control.route_start.md)  **开始进行路由监听**
 
-- [**navigate_to_page( page , [state] , [replace] , [transition] )**](https://www.zybuluo.com/mansonchor/note/6717)  **路由到指定页面** 
+- [**navigate_to_page( page , [state] , [replace] , [transition] )**](https://github.com/mansonchor/mobile_web_frame/blob/master/doc/page_control.navigate_to_page.md)  **路由到指定页面** 
 
-- [**back( )**](https://www.zybuluo.com/mansonchor/note/6785)  **返回上一页面** 
+- [**back( )**](https://github.com/mansonchor/mobile_web_frame/blob/master/doc/page_control.back.md)  **返回上一页面** 
 
-- [**return_current_page_view( )**](https://www.zybuluo.com/mansonchor/note/6788)  **返回当前页面的视图对象**
+- [**return_current_page_view( )**](https://github.com/mansonchor/mobile_web_frame/blob/master/doc/page_control.return_current_page_view.md)  **返回当前页面的视图对象**
