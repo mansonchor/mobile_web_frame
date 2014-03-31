@@ -1,8 +1,8 @@
 #page_control.return_current_page_view( )
 
-**return** : dom | zepto对象
+@**return** {dom | zepto瀵硅薄}
 
-返回当前在可视区域活动的页面视图
+杩斿洖褰撳墠鍦ㄥ彲瑙嗗尯鍩熸椿鍔ㄧ殑椤甸潰瑙嗗浘
 
 ```javascript
 page_control.return_current_page_view()

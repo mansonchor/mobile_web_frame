@@ -65,7 +65,6 @@ options.events = {
 它和 page_before_show 的调用时机差别，在于转场效果会占用一定的动画时间
 假如没有转场效果，理论上 page_before_show 和 page_show 的调用时间一致
 
-----------
 
 >{function} **page_before_hide** ： 如果定义了该函数，页面在退出可视区域前会调用
 
@@ -75,7 +74,6 @@ options.events = {
 
 [DEMO][5]
 
-----------
 
 >{function} **window_change** ： 如果定义了该函数，页面在屏幕范围大小变化时会调用
 

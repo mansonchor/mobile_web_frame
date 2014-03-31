@@ -1,54 +1,41 @@
 #page_control.navigate_to_page( page , [state] , [replace] , [transition] )
 
-**return** : none
+@**return** {none}
 
-----------
-
-**page**  
-*type£ºstring*
-ÒªÂ·ÓÉµ½µÄÒ³Ãæ hash
+@**param** {string} page ï¼š è¦è·¯ç”±åˆ°çš„é¡µé¢ hash
 
 ```javascript
-page_control.navigate_to_page('last')    //Â·ÓÉµ½hash¶ÔÓ¦ÊÇlastµÄÒ³Ãæ
-page_control.navigate_to_page('last/1000')    //´ø²ÎÊıµÄÒ³ÃæÂ·ÓÉ
+page_control.navigate_to_page('last')    //è·¯ç”±åˆ°hashå¯¹åº”æ˜¯lastçš„é¡µé¢
+page_control.navigate_to_page('last/1000')    //å¸¦å‚æ•°çš„é¡µé¢è·¯ç”±
 page_control.navigate_to_page('last/1000/big')
 ```
 
-**state**  
-*type£ºjson*
-Òª´«µİ¸øÒ³ÃæµÄÊı¾İ£¬¿ÉÒÔÔÚ `page_init` `page_show` µÈº¯ÊıÊÕµ½
+@**param** {json} state ï¼š è¦ä¼ é€’ç»™é¡µé¢çš„æ•°æ®ï¼Œå¯ä»¥åœ¨ `page_init` `page_show` ç­‰å‡½æ•°æ”¶åˆ°
 
 ```javascript
-page_control.navigate_to_page('last' , { art_id : 1000 })    //Â·ÓÉµ½last£¬²¢´«µİ²ÎÊı
+page_control.navigate_to_page('last' , { art_id : 1000 })    //è·¯ç”±åˆ°lastï¼Œå¹¶ä¼ é€’å‚æ•°
 ```
 
 ```javascript
 options.page_init = function(page_view , params , state)
 {
-	//state¼´ÊÇ navigate Ê±´«µİµÄ²ÎÊı¶ÔÏó
+	//stateå³æ˜¯ navigate æ—¶ä¼ é€’çš„å‚æ•°å¯¹è±¡
 	var art_id = state.art_id
 }
 ```
 
-ÕâÀïÒªÇø±ğÓÚurl hash´ø²ÎÊıµÄ×ö·¨
+è¿™é‡Œè¦åŒºåˆ«äºurl hashå¸¦å‚æ•°çš„åšæ³•
 
-ÕâÖÖÇé¿öÊÇÔÚÁ½¸öÒ³Ãæ¼äÖ´ĞĞÂ·ÓÉÊ±´«µİ²ÎÊı£¬`²»Ó¦¸ÃÊôÓÚÇ¿ÖÆĞèÇóµÄ´«²Î`£¬ÈçÖ±½Ó´ò¿ª¶ÔÓ¦Ò³Ãæ»òË¢ĞÂÒ³ÃæÊ±£¬²ÎÊı½«Ã»ÓĞ°ì·¨´«µİ£¬ÒòÎª²»ÊÇÇ°ºóÁ½¸öÒ³ÃæÖ®¼äµÄÂ·ÓÉ½»»¥
+è¿™ç§æƒ…å†µæ˜¯åœ¨ä¸¤ä¸ªé¡µé¢é—´æ‰§è¡Œè·¯ç”±æ—¶ä¼ é€’å‚æ•°ï¼Œ`ä¸åº”è¯¥å±äºå¼ºåˆ¶éœ€æ±‚çš„ä¼ å‚`ï¼Œå¦‚ç›´æ¥æ‰“å¼€å¯¹åº”é¡µé¢æˆ–åˆ·æ–°é¡µé¢æ—¶ï¼Œå‚æ•°å°†æ²¡æœ‰åŠæ³•ä¼ é€’ï¼Œå› ä¸ºä¸æ˜¯å‰åä¸¤ä¸ªé¡µé¢ä¹‹é—´çš„è·¯ç”±äº¤äº’
 
-¼ÙÈçÄ³¸öÒ³ÃæµÄ²ÎÊıÊÇ±ØĞëµÄ£¬ÇëÊ¹ÓÃurl hash´ø²ÎÊıµÄ·½·¨
+å‡å¦‚æŸä¸ªé¡µé¢çš„å‚æ•°æ˜¯å¿…é¡»çš„ï¼Œè¯·ä½¿ç”¨url hashå¸¦å‚æ•°çš„æ–¹æ³•
 
+@**param** {bool} replace 
 
-**replace**  
-*type£ºbool*
+æŒ‰ç…§backboneçš„è¯´æ˜ï¼šTo update the URL without creating an entry in the browser's history
 
-°´ÕÕbackboneµÄËµÃ÷£ºTo update the URL without creating an entry in the browser's history
+å®é™…ä½¿ç”¨æ—¶ï¼Œå´æ˜¯æ›¿æ¢æ‰ä¸Šä¸€æ¬¡çš„æµè§ˆå™¨å†å²
 
-Êµ¼ÊÊ¹ÓÃÊ±£¬È´ÊÇÌæ»»µôÉÏÒ»´ÎµÄä¯ÀÀÆ÷ÀúÊ·
+æ‰€ä»¥ `è¯¥å‚æ•°éœ€æ…ç”¨`
 
-ËùÒÔ `¸Ã²ÎÊıĞèÉ÷ÓÃ`
-
-
-
-**transition**  
-*type : emum( none , slide , ~~slide reverse~~ , slideup , fade )*
-
-Ç¿ÖÆÉèÖÃ×ª³¡Ğ§¹û£¬ºöÂÔÄ¿±êÒ³ÃæÉè¶¨µÄ transition_type 
+@**param** {emum} transition [none , slide , ~~slide reverse~~ , slideup , fade] ï¼š å¼ºåˆ¶è®¾ç½®è½¬åœºæ•ˆæœï¼Œå¿½ç•¥ç›®æ ‡é¡µé¢è®¾å®šçš„ transition_type 

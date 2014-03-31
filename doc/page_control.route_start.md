@@ -1,10 +1,10 @@
 #page_control.route_start( )
 
-**return** : none
+@**return** {none}
 
-Ïàµ±ÓÚÖ´ĞĞ
+ç›¸å½“äºæ‰§è¡Œ
 ```
 Backbone.history.start()
 ```
 
-Ö»ÓĞ¿ªÆô route_start ºó£¬²ÅÄÜ¼àÌıurl hashµÄ±ä»¯
+åªæœ‰å¼€å¯ route_start åï¼Œæ‰èƒ½ç›‘å¬url hashçš„å˜åŒ–

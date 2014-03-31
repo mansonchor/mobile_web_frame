@@ -1,38 +1,21 @@
 #page_control.init( container , [options] )
 
-**return** : none
+@**return** {none}
+
+@**param** {dom | zeptoå¯¹è±¡} container ï¼š æ‰¿è½½é¡µé¢çš„å®¹å™¨ 
+
+@**param** {json} options
+
+>{string}  **default_index_route** ï¼š å½“åˆæ¬¡è¿›å…¥åº”ç”¨æ²¡æœ‰æŒ‡å®šè·¯ç”±åœ°å€æ—¶ï¼Œé»˜è®¤è‡ªåŠ¨è·¯ç”±åˆ°è¯¥åœ°å€
+
+>{string}  **default_title** ï¼š æµè§ˆå™¨çš„titleæ˜¾ç¤ºï¼Œé¡µé¢æ²¡æœ‰ç‰¹å®štitleæ—¶çš„é»˜è®¤æ˜¾ç¤ºæ–‡æ¡ˆ
+
+>{function}  **before_route** ï¼š åœ¨æ§åˆ¶å™¨è·¯ç”±å“åº”ä¹‹å‰è§¦å‘
+
+>{function}  **after_route** ï¼š åœ¨æ§åˆ¶å™¨è·¯ç”±å“åº”ä¹‹åè§¦å‘
 
 
-----------
-
-**container**  
-*type£ºdom | zepto¶ÔÏó*
-³ĞÔØÒ³ÃæµÄÈİÆ÷ 
-
-
-**options**
-*type : json¶ÔÏó*
-
->**default_index_route**
-*type : string*
-µ±³õ´Î½øÈëÓ¦ÓÃÃ»ÓĞÖ¸¶¨Â·ÓÉµØÖ·Ê±£¬Ä¬ÈÏ×Ô¶¯Â·ÓÉµ½¸ÃµØÖ·
-
-----------
->**default_title**
-*type : string*
-ä¯ÀÀÆ÷µÄtitleÏÔÊ¾£¬Ò³ÃæÃ»ÓĞÌØ¶¨titleÊ±µÄÄ¬ÈÏÏÔÊ¾ÎÄ°¸
-
-----------
->**before_route**
-*type : function*
-ÔÚ¿ØÖÆÆ÷Â·ÓÉÏìÓ¦Ö®Ç°´¥·¢
-
-----------
->**after_route**
-*type : function*
-ÔÚ¿ØÖÆÆ÷Â·ÓÉÏìÓ¦Ö®ºó´¥·¢
-
-´úÂëÊ¾Àı
+ä»£ç ç¤ºä¾‹
 ``` javascript
 var $ = require('zepto')
 var page_control = require('page_control')

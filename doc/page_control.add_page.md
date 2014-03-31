@@ -1,60 +1,53 @@
 #page_control.add_page( page_controler )
 
-**return** : none
+@**return** {none}
 
-----------
-**page_controler**  
-*type£ºframe pageÀàÄ£¿é*
+@**param** {frame pageç±»æ¨¡å—} page_controler
 
-´«ÈëµÄ²ÎÊıÊÇÒ»¸öseajsÄ£¿é£¬Õâ¸öÄ£¿éÓ¦¸Ã±©Â¶Á½¸ö½Ó¿Ú
+page_controleræ˜¯ä¸€ä¸ªseajsæ¨¡å—ï¼Œè¿™ä¸ªæ¨¡å—åº”è¯¥æš´éœ²ä¸¤ä¸ªæ¥å£
 
->**route**
-*type : json*
-Ò³ÃæµÄÂ·ÓÉÅäÖÃ£¬»ù´¡ÊÇ[backboneµÄroute][1]
+>{json} **route** ï¼š é¡µé¢çš„è·¯ç”±é…ç½®ï¼ŒåŸºç¡€æ˜¯[backboneçš„route][1]
 
 ```javascript
 exports.route = { "index": "index"  }
 ```
-Ò²¿ÉÒÔ×é½¨´ø²ÎÊıµÄurl hash
+ä¹Ÿå¯ä»¥ç»„å»ºå¸¦å‚æ•°çš„url hash
 ```javascript
-exports.route = { "last/:art_id": "last"  }    //ÄÜÆ¥Åä #last/1000 µÈurl hash
+exports.route = { "last/:art_id": "last"  }    //èƒ½åŒ¹é… #last/1000 ç­‰url hash
 
-exports.route = { "cat/:cat_id/:art_id": "cat"  }    //ÄÜÆ¥Åä #cat/2/1000 µÈurl hash
+exports.route = { "cat/:cat_id/:art_id": "cat"  }    //èƒ½åŒ¹é… #cat/2/1000 ç­‰url hash
 ```
 
-Ò²¿ÉÍ¨¹ı()ÉèÖÃ·ÇÇ¿ÖÆ²ÎÊı
+ä¹Ÿå¯é€šè¿‡()è®¾ç½®éå¼ºåˆ¶å‚æ•°
 ```javascript
-exports.route = { "hot/(:is_big_img)": "hot"  }    //ÄÜÆ¥Åä #hot ºÍ #hot/true
+exports.route = { "hot/(:is_big_img)": "hot"  }    //èƒ½åŒ¹é… #hot å’Œ #hot/true
 
-exports.route = { "cat/:cat_id/(:art_id)": "cat"  }    //ÄÜÆ¥Åä #cat/2/1000 ºÍ #cat/2
+exports.route = { "cat/:cat_id/(:art_id)": "cat"  }    //èƒ½åŒ¹é… #cat/2/1000 å’Œ #cat/2
 ```
 
-url²ÎÊı¿ÉÔÚÒ³ÃæµÄ `page_init` `page_show` µÈ¼àÌıÏÂ½ÓÊÕµ½
+urlå‚æ•°å¯åœ¨é¡µé¢çš„ `page_init` `page_show` ç­‰ç›‘å¬ä¸‹æ¥æ”¶åˆ°
 
 ```
-//Ò³ÃæÂ·ÓÉÅäÖÃ
+//é¡µé¢è·¯ç”±é…ç½®
 exports.route = { "last/:art_id": "last"  }
 exports.new_page_entity = function()
 {
 	options.page_init = function(page_view , params)
 	{
-        //paramsÊÇÒ»¸öÊı×é£¬ÒÀ´ÎÊÇurl´«µİµÄ²ÎÊı
-	    var art_id = params[0]    //urlµÄµÚÒ»¸ö²ÎÊı£¬¼´art_id
+        //paramsæ˜¯ä¸€ä¸ªæ•°ç»„ï¼Œä¾æ¬¡æ˜¯urlä¼ é€’çš„å‚æ•°
+	    var art_id = params[0]    //urlçš„ç¬¬ä¸€ä¸ªå‚æ•°ï¼Œå³art_id
 	}
 
 	var page = require('page').new_page(options)
-	return page     //×îºóreturn  frame pageÀàÊµÀı
+	return page     //æœ€åreturn  frame pageç±»å®ä¾‹
 } 
 ```
 
 ----------
 
->**new_page_entity**
-*type : function return£ºframe pageÀà*
-´¦Àí¸ÃÒ³ÃæÒµÎñµÄËùÓĞ´úÂëÄÚÈİ£¬**¸Ã·½·¨×îºó±ØĞëreturnÒ»¸ö[frame pageÀàÊµÀı][2]**
+>{function} **new_page_entity** ï¼š å¤„ç†è¯¥é¡µé¢ä¸šåŠ¡çš„æ‰€æœ‰ä»£ç å†…å®¹ï¼Œ**è¯¥æ–¹æ³•æœ€åå¿…é¡»returnä¸€ä¸ª[frame pageç±»å®ä¾‹][2]**
 
- 
-¼ÙÉèÒªÌí¼ÓÒ»¸öÒ³Ãæ index
+å‡è®¾è¦æ·»åŠ ä¸€ä¸ªé¡µé¢ index
 ```javascript
 page_control.init( $('.page_container'),{
 	default_index_route : "index"
@@ -65,25 +58,23 @@ var index_page = require('index')
 page_control.add_page(index_page)
 ```
 
-index.jsÎÄ¼şÈçÏÂ£º
+index.jsæ–‡ä»¶å¦‚ä¸‹ï¼š
 ```javascript
 define(function(require, exports)
 {
-	var page_control = require('page_control')
-	
-	//Ò³ÃæÂ·ÓÉÅäÖÃ
+	//é¡µé¢è·¯ç”±é…ç½®
 	exports.route = { "index": "index"  }
 
 	exports.new_page_entity = function()
 	{
-		//Ò³ÃæÅäÖÃ
+		//é¡µé¢é…ç½®
 		var options = {
 			transition_type : 'none'
 		}
 		
 		options.initialize = function()
 		{
-			//Ò³Ãæ³õÊ¼»¯
+			//é¡µé¢åˆå§‹åŒ–
 		}
 
 		
@@ -95,7 +86,7 @@ define(function(require, exports)
 		     
 		var page = require('page').new_page(options)
 		
-		return page		//×îºóreturn  frame pageÀàÊµÀı
+		return page		//æœ€åreturn  frame pageç±»å®ä¾‹
 	}	
 })
 ```
