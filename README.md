@@ -174,6 +174,15 @@ seajs.use(["base_package","frame_package"],function()
 - [**new_scroll( scroll_view_obj , [options] )**](https://github.com/mansonchor/mobile_web_frame/blob/master/doc/scroll.new_scroll.md)  **新建一个滚动**
 
 
+## 3. 移动Web开发规范、经验、总结分享
+
+### 3.1 前端技术
+- 在web app善用backbone MVC
+
+
+### 3.2 交互设计
+
+
 
   [1]: http://mansonchor.github.io/mobile_web_frame/images/pc_scroll.png
   [2]: http://iscrolljs.com/
