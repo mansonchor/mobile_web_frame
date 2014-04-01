@@ -2,24 +2,53 @@
 
 @**return** {frame scroll object}
 
-@**param** {dom | zepto¶ÔÏó} scroll_view_obj£º Òª¹ö¶¯µÄÈİÆ÷
+@**param** {dom | zeptoå¯¹è±¡} scroll_view_objï¼š è¦æ»šåŠ¨çš„å®¹å™¨
 
 @**param** {json} options
 
->{int}  **view_height** £º Éè¶¨¹ö¶¯ÈİÆ÷µÄ¸ß¶È
+>{int}  **view_height** ï¼š è®¾å®šæ»šåŠ¨å®¹å™¨çš„é«˜åº¦
 
->{bool}  **bounce** [defalut : false]£º ¹ö¶¯µ½±ßÔµÊÇ·ñÓĞ·´µ¯
+>{bool}  **bounce** [defalut : false]ï¼š æ»šåŠ¨åˆ°è¾¹ç¼˜æ˜¯å¦æœ‰åå¼¹
 
->{function}  **scroll_start**£º ¹ö¶¯¿ªÊ¼Ê±´¥·¢
+>{function}  **scroll_start**ï¼š æ»šåŠ¨å¼€å§‹æ—¶è§¦å‘
 
->{function}  **scroll_end**£º ¹ö¶¯Íê±ÏÊ±´¥·¢
+>{function}  **scroll_end**ï¼š æ»šåŠ¨å®Œæ¯•æ—¶è§¦å‘
 
->{bool}  **use_lazyload** [defalut : false]£º ÊÇ·ñÊ¹ÓÃlazyload¼ÓÔØÍ¼Æ¬
+>{bool}  **use_lazyload** [defalut : false]ï¼š æ˜¯å¦ä½¿ç”¨lazyloadåŠ è½½å›¾ç‰‡
 
-ËµÃ÷£º
+è¯´æ˜ï¼š
 
--  1. scroll_view_obj ÊÇ°ü¹ü×Å¹ö¶¯ÄÚÈİµÄ×îÍâ²ãÈİÆ÷£¬Ê¹ÓÃscroll¿Ø¼şĞèÒªhtml×éÖ¯ÅäºÏ¡£iscroll¹Ù·½½¨Òéhtml½á¹¹Ô½¼òµ¥Ô½ºÃ
+-  1. scroll_view_obj æ˜¯åŒ…è£¹ç€æ»šåŠ¨å†…å®¹çš„æœ€å¤–å±‚å®¹å™¨ï¼Œä½¿ç”¨scrollæ§ä»¶éœ€è¦htmlç»„ç»‡é…åˆã€‚iscrollå®˜æ–¹å»ºè®®htmlç»“æ„è¶Šç®€å•è¶Šå¥½ï¼Œå…·ä½“å¯å‚è€ƒ [iScrollæ–‡æ¡£][1]
+
+```html
+<div id="wrapper">
+    <ul>
+        <li>...</li>
+        <li>...</li>
+        ...
+    </ul>
+</div>
+```
+
+```javascript
+var view_scroll = require('scroll')
+var scroll_view_obj = $('#wrapper')
+
+view_scroll.new_scroll( scroll_view_obj )
+```
+
+- 2.view_heightçš„è®¾å®šï¼Œå¯ä»¥éšæ„æ§åˆ¶é¡µé¢æ»šåŠ¨çš„èŒƒå›´ï¼Œä¾‹å¦‚ä»¥ä¸‹å‡ ç§æƒ…å†µ
+
+![æ­¤å¤„è¾“å…¥å›¾ç‰‡çš„æè¿°][2]
+
+![æ­¤å¤„è¾“å…¥å›¾ç‰‡çš„æè¿°][3]
+
+![æ­¤å¤„è¾“å…¥å›¾ç‰‡çš„æè¿°][4]
 
 
 
 
+  [1]: http://iscrolljs.com/#getting-started
+  [2]: http://mansonchor.github.io/mobile_web_frame/images/scroll_1.png
+  [3]: http://mansonchor.github.io/mobile_web_frame/images/scroll_2.png
+  [4]: http://mansonchor.github.io/mobile_web_frame/images/scroll_3.png
