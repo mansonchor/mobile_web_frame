@@ -1,4 +1,3 @@
-[TOC]
 #Mobile web frame开发指南
 
 ##1.使用Web App的条件和背景
@@ -104,7 +103,7 @@ seajs.config
 
 因为基础的js库和控制类平常不用修改，可以把基础模块整合到一起，下面是 base_package.js的内容：
 
-![](http://img5.poco.cn/wiki/upload/e/eb/QQ%E5%9B%BE%E7%89%8720140312115656.jpg)
+![](http://mansonchor.github.io/mobile_web_frame/images/base_package.jpg)
 
 这样 `require` 两个模块就可以开始使用框架
 
@@ -156,3 +155,28 @@ seajs.use(["base_package","frame_package"],function()
 - [**back( )**](https://github.com/mansonchor/mobile_web_frame/blob/master/doc/page_control.back.md)  **返回上一页面** 
 
 - [**return_current_page_view( )**](https://github.com/mansonchor/mobile_web_frame/blob/master/doc/page_control.return_current_page_view.md)  **返回当前页面的视图对象**
+
+
+####2.3.3 页面内容滚动
+内容滚动可以说是最常规的需求，从前我们的页面可能是这样的
+
+![此处输入图片的描述][1]
+
+如果一个窗口只显示一个页面，浏览器自带的滚动机制会帮我们处理得很好
+
+可是单页应用没有这么简单，我们需要在一个窗口 ~~同时显示这些高度不同的页面~~ 切换着来显示这些高度不同页面 ，这时候浏览器窗口只有一个滚动条就满足不了多页面的需求了（切换时的体验，记录页面历史滚动位置等）
+
+该方案处理滚动的核心思想是借助 [iScroll][2]，让每个页面的滚动独立处理
+
+![此处输入图片的描述][3]
+
+
+- [**new_scroll( scroll_view_obj , [options] )**](https://github.com/mansonchor/mobile_web_frame/blob/master/doc/scroll.new_scroll.md)  **新建一个滚动**
+
+
+  [1]: http://mansonchor.github.io/mobile_web_frame/images/pc_scroll.png
+  [2]: http://iscrolljs.com/
+  [3]: http://mansonchor.github.io/mobile_web_frame/images/mobile_scroll.png
+  [4]: http://mansonchor.github.io/mobile_web_frame/images/scroll_1.png
+  [5]: http://mansonchor.github.io/mobile_web_frame/images/scroll_2.png
+  [6]: http://mansonchor.github.io/mobile_web_frame/images/scroll_3.png
