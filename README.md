@@ -174,6 +174,7 @@ seajs.use(["base_package","frame_package"],function()
 - [**new_scroll( scroll_view_obj , [options] )**](https://github.com/mansonchor/mobile_web_frame/blob/master/doc/scroll.new_scroll.md)  **新建一个滚动**
 
 
+
   [1]: http://mansonchor.github.io/mobile_web_frame/images/pc_scroll.png
   [2]: http://iscrolljs.com/
   [3]: http://mansonchor.github.io/mobile_web_frame/images/mobile_scroll.png

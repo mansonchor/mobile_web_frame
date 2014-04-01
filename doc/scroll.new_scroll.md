@@ -10,6 +10,8 @@
 
 >{bool}  **bounce** [defalut : false]： 滚动到边缘是否有反弹
 
+>{bool}  **hideScrollbar** [defalut : true]： 静止时隐藏滚动条
+
 >{function}  **scroll_start**： 滚动开始时触发
 
 >{function}  **scroll_end**： 滚动完毕时触发
@@ -37,7 +39,7 @@ var scroll_view_obj = $('#wrapper')
 view_scroll.new_scroll( scroll_view_obj )
 ```
 
-- 2.view_height的设定，可以随意控制页面滚动的范围，例如以下几种情况
+- 2. view_height的设定，可以随意控制页面滚动的范围，例如以下几种情况
 
 ![此处输入图片的描述][2]
 
@@ -46,9 +48,17 @@ view_scroll.new_scroll( scroll_view_obj )
 ![此处输入图片的描述][4]
 
 
+- 3. lazyload功能也需要HTML配合，在渲染 <img>时，先不要显式设置 src
+```html
+<img  lazyload_src="xxxx">
+```
+这样图片只会在滚动到屏幕可视位置时，才会加载
+
+各种滚动 [DEMO][5]
 
 
   [1]: http://iscrolljs.com/#getting-started
   [2]: http://mansonchor.github.io/mobile_web_frame/images/scroll_1.png
   [3]: http://mansonchor.github.io/mobile_web_frame/images/scroll_2.png
   [4]: http://mansonchor.github.io/mobile_web_frame/images/scroll_3.png
+  [5]: http://mansonchor.github.io/mobile_web_frame/demo/scroll.html
