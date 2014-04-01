@@ -32,11 +32,17 @@ Mobile Web App解决方案是一个高效、实用的webapp统一解决方案，
 
 ###2.2 结构说明
 ####2.2.1 方案的基础
+
 `seajs`: 因为单页不刷新的机制加上项目需要大量编写js代码，模块化开发对项目的维护性相当重要。框架内所有js文件使用都遵从seajs规范
+
 `backbone`:提供web app锚点路由；数据模型(model)、集合(collection)、视图(view)控制。亦即它是一个`MVC`框架
+
 `zepto`:jquery的移动版，它只针对webkit所以要比jq高效和轻量
+
 `hammer`:专业的移动端手势事件库
+
 `iscroll`:业内最好的web模拟原生滚动体验的库，没有之一
+
 `mustache`:前端template渲染模板库，这类型的库很多，可自由选择
 
 了解和熟悉上面的js类库，有助于更好的使用Mobile Web App方案进行开发
@@ -67,6 +73,7 @@ Mobile Web App解决方案是一个高效、实用的webapp统一解决方案，
 ```
 
 sea.js和seajs_config.js是seajs基础文件，sea.js版本建议使用2.0或以上
+
 base目录里包含所有基础类库，frame目录是web app控制类
 
 seajs_config.js代码如下：
@@ -92,6 +99,7 @@ seajs.config
 })
 ```
 对各个js文件配置了别名，方便模块调用
+
 如果你对sea.js模块化开发还是一知半解，建议移步 [sea.js官网](http://seajs.org/docs/) 先进行学习
 
 因为基础的js库和控制类平常不用修改，可以把基础模块整合到一起，下面是 base_package.js的内容：
@@ -133,8 +141,8 @@ seajs.use(["base_package","frame_package"],function()
 ####2.3.2 页面控制器
 
 页面控制的核心其实是 `路由` 和 `浏览器历史` 控制
-它是系统链接页面的一个桥梁，也是页面与页面链接的桥梁
 
+它是系统链接页面的一个桥梁，也是页面与页面链接的桥梁
 
 
 - [**init( container , [options] )**](https://github.com/mansonchor/mobile_web_frame/blob/master/doc/page.init.md)  **初始化一个页面控制器**
