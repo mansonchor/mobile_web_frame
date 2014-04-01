@@ -119,7 +119,7 @@ seajs.use(["base_package","frame_package"],function()
     alert('调用成功')
 })
 ```
-使用框架开发准备工作至此，[看DEMO猛点我](http://www.mansonchor.com/mobile_web_frame/demo/prepare.html)
+使用框架开发准备工作至此，[看DEMO猛点我](http://mansonchor.github.io/mobile_web_frame/demo/prepare.html)
 
 ###2.3 使用说明
 ####2.3.1 页面
