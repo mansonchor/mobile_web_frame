@@ -15,7 +15,7 @@ define(function(require, exports)
 		{
 			//this.$el.css('background','yellow')
 
-			this.$el.html('<header style="background : #ff9999;text-align:center;height:50px;line-height:50px">header</header><div style="text-align:center;margin-top:10px;"><textarea style="width:90%;height:100px;border:1px solid black"></textarea><div class="btn" style=" display:inline-block; width:90%;height:30px;background : red;margin-top:10px">提交</div></div><div class="wraper"><div class="real_container"></div></div><footer style="background : #ff9999;text-align:center;height:50px;line-height:50px"><table style="width:100%;height:100%;text-align:center" cellpadding=0 cellspacing=0><tr><td class="demo1" style="width:33%;background : #ffff99">demo1</td><td class="demo2" style="width:33%;background : #99ff99">demo2</td><td class="demo3" style="width:34%; background : #66cc33">demo3</td></tr></table></footer>')
+			this.$el.html('<header style="background : #ff9999;text-align:center;height:50px;line-height:50px">header</header><div style="text-align:center;margin-top:10px;"><textarea style="width:90%;height:100px;border:1px solid black"></textarea><div class="btn" style=" display:inline-block; width:90%;height:30px;background : red;margin-top:10px">提交</div></div><div class="wraper"><div class="real_container"></div></div><footer style="background : #ff9999;text-align:center;height:50px;line-height:50px"><table style="width:100%;height:100%;text-align:center" cellpadding=0 cellspacing=0><tr><td class="demo1" style="width:25%;background : #ffff99">demo1</td><td class="demo2" style="width:25%;background : #99ff99">demo2</td><td class="demo3" style="width:25%; background : #66cc33">demo3</td><td class="lazyload" style="width:25%; background : #3399ff">lazyload</td></tr></table></footer>')
 		}
 		
 		
@@ -58,6 +58,10 @@ define(function(require, exports)
 			'tap .demo3' : function()
 			{
 				page_control.navigate_to_page("demo3")
+			},
+			'tap .lazyload' : function()
+			{
+				page_control.navigate_to_page("lazyload")
 			}
 		}
 		     

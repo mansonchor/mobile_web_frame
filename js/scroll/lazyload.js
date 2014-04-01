@@ -3,7 +3,7 @@ define(function(require, exports)
 	var $ = require('zepto')
 	var page_control = require('page_control')
 	
-	exports.route = { "index": "index"  }
+	exports.route = { "lazyload": "lazyload"  }
 
 	exports.new_page_entity = function()
 	{
@@ -24,16 +24,17 @@ define(function(require, exports)
 			var view_scroll = require('scroll')
 			
 			view_scroll_obj = view_scroll.new_scroll( page_view.$el.find('.wraper'), {
-				'view_height' : window.innerHeight - 2*50,			//å±å¹•é«˜å‡å»headerå’Œfooteré«˜
-				'hideScrollbar' : false
+				'view_height' : window.innerHeight - 2*50,			//ÆÁÄ»¸ß¼õÈ¥headerºÍfooter¸ß
+				'hideScrollbar' : false,
+				'use_lazyload' : true
 			})
 			
 
-			//åŠ¨æ€æ·»åŠ å†…å®¹
+			//¶¯Ì¬Ìí¼ÓÄÚÈİ
 			var real_container = page_view.$el.find('.real_container')
 			for(var i = 0 ; i <= 20 ; i++)
 			{
-				real_container.append('<div style="padding : 15px 0">content txt content txt content txt </div>')
+				real_container.append('<div style="padding : 15px 0"><img lazyload_src="http://mansonchor.github.io/mobile_web_frame/images/9103967131260440634_683x1024_320_170.jpg" style="width:170px;height:170px;background : #cccccc"></div>')
 			}
 			
 		}
