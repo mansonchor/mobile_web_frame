@@ -1,3 +1,5 @@
+[TOC]
+
 #Mobile web frame开发指南
 
 ##1.使用Web App的条件和背景
@@ -172,6 +174,32 @@ seajs.use(["base_package","frame_package"],function()
 
 
 - [**new_scroll( scroll_view_obj , [options] )**](https://github.com/mansonchor/mobile_web_frame/blob/master/doc/scroll.new_scroll.md)  **新建一个滚动**
+
+
+### 2.4 功能组件
+
+#### 2.4.1 UA
+
+UA组件提供移动设备的各种信息
+
+```javascript
+var ua = require('ua')
+
+ua.isMobile                        //是否移动设备
+ua.isAndroid                       //是否安卓设备
+ua.isIDevice                       //是否IOS设备
+ua.isIpad                          //是否ipad
+ua.otherPhone			           //IOS和安卓外的其它移动设备
+
+ua.is_uc			               //UC浏览器
+ua.is_chrome		               //手机chrome浏览器
+ua.is_qq			               //手机QQ浏览器
+ua.is_real_safari		           //IOS原生safari浏览器
+
+ua.android_version		           //安卓系统版本  4.0.2
+ua.ios_version			           //IOS系统版本   7.0
+ua.is_iphone_safari_no_fullscreen  //原生IOS safari浏览器，但不是保存书签到桌面形式打开
+```
 
 
 ## 3. 移动Web开发规范、经验、总结分享
