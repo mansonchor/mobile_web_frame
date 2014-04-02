@@ -207,6 +207,7 @@ ua.is_iphone_safari_no_fullscreen  //原生IOS safari浏览器，但不是保存
 
 - **[start_img_process( img_file , process_options , callback )][4]** ： 进行图片处理
 
+- **[can_web_upload_img( )][5]** ： 判断手机是否能用该模块处理图片
 
 
 ## 3. 移动Web开发规范、经验、总结分享
@@ -222,3 +223,4 @@ ua.is_iphone_safari_no_fullscreen  //原生IOS safari浏览器，但不是保存
   [2]: http://iscrolljs.com/
   [3]: http://mansonchor.github.io/mobile_web_frame/images/mobile_scroll.png
   [4]: https://github.com/mansonchor/mobile_web_frame/blob/master/doc/img_process.start_img_process.md
+  [5]: https://github.com/mansonchor/mobile_web_frame/blob/master/doc/img_process.can_web_upload_img.md
