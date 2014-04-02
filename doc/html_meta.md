@@ -48,7 +48,7 @@ IOS safari把网址添加到桌面的时候，可以设置ICON，启动封面图
 
 
 解决横竖屏会出现字体加粗不一致情况
-```
+```CSS
 html,body { 
     -webkit-text-size-adjust: 100%;
     -ms-text-size-adjust: 100%;
@@ -58,7 +58,6 @@ html,body {
 
 
 禁止用户长按行为和选中文字
-
 ```CSS
 html,body {  -webkit-touch-callout: none; -webkit-user-select: none; -webkit-tap-highlight-color: none; }
 ```
