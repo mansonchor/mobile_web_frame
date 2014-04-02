@@ -54,7 +54,7 @@ $('refresh_btn').tap(function()
 
 使用backbone，可以把作品结构映射到Models，通过作品集Collection可以获取数据，销毁或者保存到服务器上。当界面上的操作引起 Collection集合变化时，Collection会触发change事件;那些用来显示Collection状态的view会接受到Collection触发change的消息，进 而发出对应的响应，并且重新渲染新的数据到界面。在一个完整的backbone应用中，你不需要写那些胶水代码来从DOM中通过特殊的id来获取节点，或 者手工的更新HTML页面，因为在Collection发生变化时，views会很简单的进行自我更新。
 
-```
+```javascript
 var art_model = Backbone.Model.extend({
 	defaults:
 	{
