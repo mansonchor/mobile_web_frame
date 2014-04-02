@@ -201,6 +201,13 @@ ua.ios_version			           //IOS系统版本   7.0
 ua.is_iphone_safari_no_fullscreen  //原生IOS safari浏览器，但不是保存书签到桌面形式打开
 ```
 
+#### 2.4.2 img_process
+
+前端图片文件处理模块
+
+- **[start_img_process( img_file , process_options , callback )][4]** ： 进行图片处理
+
+
 
 ## 3. 移动Web开发规范、经验、总结分享
 
@@ -211,10 +218,7 @@ ua.is_iphone_safari_no_fullscreen  //原生IOS safari浏览器，但不是保存
 ### 3.2 交互设计
 
 
-
   [1]: http://mansonchor.github.io/mobile_web_frame/images/pc_scroll.png
   [2]: http://iscrolljs.com/
   [3]: http://mansonchor.github.io/mobile_web_frame/images/mobile_scroll.png
-  [4]: http://mansonchor.github.io/mobile_web_frame/images/scroll_1.png
-  [5]: http://mansonchor.github.io/mobile_web_frame/images/scroll_2.png
-  [6]: http://mansonchor.github.io/mobile_web_frame/images/scroll_3.png
+  [4]: https://github.com/mansonchor/mobile_web_frame/blob/master/doc/img_process.start_img_process.md
