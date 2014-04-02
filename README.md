@@ -213,7 +213,9 @@ ua.is_iphone_safari_no_fullscreen  //原生IOS safari浏览器，但不是保存
 ## 3. 移动Web开发规范、经验、总结分享
 
 ### 3.1 前端技术
-- [在web app善用backbone MVC][6]
+- [**在web app善用backbone MVC**][6]
+
+- [**HTML前期实用属性配置**][7]
 
 
 ### 3.2 交互设计
@@ -225,3 +227,4 @@ ua.is_iphone_safari_no_fullscreen  //原生IOS safari浏览器，但不是保存
   [4]: https://github.com/mansonchor/mobile_web_frame/blob/master/doc/img_process.start_img_process.md
   [5]: https://github.com/mansonchor/mobile_web_frame/blob/master/doc/img_process.can_web_upload_img.md
   [6]: https://github.com/mansonchor/mobile_web_frame/blob/master/doc/backbone_share.md
+ [7]: https://github.com/mansonchor/mobile_web_frame/blob/master/doc/html_meta.md
