@@ -15,7 +15,7 @@
 ```HTML
 <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no"  />
 ```
-不要再使用 `target-densitydpi` 属性，webkit已经发了公布将不再支持这一属性
+不要再使用 `target-densitydpi` 属性，**webkit已经发了公布将不再支持这一属性**
 
 设置默认缩放比例 `initial-scale=1.0` 即可
 
