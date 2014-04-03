@@ -217,6 +217,8 @@ ua.is_iphone_safari_no_fullscreen  //原生IOS safari浏览器，但不是保存
 
 - [**HTML前期实用属性配置**][7]
 
+- [**适应各种屏幕的界面还原方案**][8]
+
 
 ### 3.2 交互设计
 
@@ -228,3 +230,4 @@ ua.is_iphone_safari_no_fullscreen  //原生IOS safari浏览器，但不是保存
   [5]: https://github.com/mansonchor/mobile_web_frame/blob/master/doc/img_process.can_web_upload_img.md
   [6]: https://github.com/mansonchor/mobile_web_frame/blob/master/doc/backbone_share.md
  [7]: https://github.com/mansonchor/mobile_web_frame/blob/master/doc/html_meta.md
+[8]: https://github.com/mansonchor/mobile_web_frame/blob/master/doc/screen_achieve.md
