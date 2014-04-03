@@ -256,6 +256,8 @@ ua.is_iphone_safari_no_fullscreen  //原生IOS safari浏览器，但不是保存
 
 ### 3.2 交互设计
 
+- **[自适应设计和针对webapp的设计][9]**
+
 
   [1]: http://mansonchor.github.io/mobile_web_frame/images/pc_scroll.png
   [2]: http://iscrolljs.com/
@@ -263,5 +265,6 @@ ua.is_iphone_safari_no_fullscreen  //原生IOS safari浏览器，但不是保存
   [4]: https://github.com/mansonchor/mobile_web_frame/blob/master/doc/img_process.start_img_process.md
   [5]: https://github.com/mansonchor/mobile_web_frame/blob/master/doc/img_process.can_web_upload_img.md
   [6]: https://github.com/mansonchor/mobile_web_frame/blob/master/doc/backbone_share.md
- [7]: https://github.com/mansonchor/mobile_web_frame/blob/master/doc/html_meta.md
-[8]: https://github.com/mansonchor/mobile_web_frame/blob/master/doc/screen_achieve.md
+  [7]: https://github.com/mansonchor/mobile_web_frame/blob/master/doc/html_meta.md
+  [8]: https://github.com/mansonchor/mobile_web_frame/blob/master/doc/screen_achieve.md
+  [9]: https://github.com/mansonchor/mobile_web_frame/blob/master/doc/adaptive_design.md
