@@ -50,15 +50,21 @@ img { max-width: 100% }
 ![此处输入图片的描述][2]
 
 
-- **使用性能低下的下拉刷新**
+- **使用性能低下的动画和交互效果**
 
-在IOS普及之初大行其道，不用这个交互好像都不好意思说自己是做app的
+web在性能和内存控制方面是硬伤，一些简单的过场和展现效果，还可以用CSS3 transition实现。
 
-业内也有模拟实现的库，在IOS体验还可以，在安卓就是拼硬件的节奏了
+但是对于交互效果，还是建议一切从简。因为即使你呕心沥血实现了，体验也会和原生app差一大截
 
-所以，放弃这个交互吧，web在性能和内存控制方面是硬伤，不要去揭自己的伤疤
+记住，这是硬伤，是由于操作系统和硬件等原因造成的，随着发展会被解决。但是目前来讲还是不要去揭这个伤疤
 
 ![此处输入图片的描述][3]
+
+下拉刷新在IOS普及之初大行其道，不用这个交互好像都不好意思说自己是做app的
+
+![此处输入图片的描述][4]
+
+path这种以交互设计为主导的产品并不少见，如定位是该方向，建议尽早放弃
 
 
 - **过分使用圆角、阴影、渐变、半透明 等CSS3属性**
@@ -72,15 +78,15 @@ so，让我们拥抱扁平化吧！
 
 - **点击范围和反馈**
 
-![此处输入图片的描述][4]
+![此处输入图片的描述][5]
 
 可以点击的元素，设计上不要做成传统文字链的形式，记住，你的用户不是用鼠标而是**手指**在操作
 
-舒适的点击范围和可点击的心理预期，对用户体验是极其重要的。[一篇点击范围的文章][5]
+舒适的点击范围和可点击的心理预期，对用户体验是极其重要的。[一篇点击范围的文章][6]
 
 针对可点击元素，要有4种状态：normal、active、loading、disabled
 
-![此处输入图片的描述][6]
+![此处输入图片的描述][7]
 
 至少要有 normal、active 两种状态，因为一个按钮点下去没有反馈是很生硬的，优化好这些细节才能在使用过程感到流畅、友善
 
@@ -88,6 +94,7 @@ so，让我们拥抱扁平化吧！
   [1]: http://mansonchor.github.io/mobile_web_frame/images/design_1.jpg
   [2]: http://mansonchor.github.io/mobile_web_frame/images/design_2.jpg
   [3]: http://mansonchor.github.io/mobile_web_frame/images/design_3.jpg
-  [4]: http://mansonchor.github.io/mobile_web_frame/images/tap_wave.jpg
-  [5]: http://elya.cc/2012/03/06/design-focus/
-  [6]: http://mansonchor.github.io/mobile_web_frame/images/button.png
+  [4]: http://mansonchor.github.io/mobile_web_frame/images/path.jpg
+  [5]: http://mansonchor.github.io/mobile_web_frame/images/tap_wave.jpg
+  [6]: http://elya.cc/2012/03/06/design-focus/
+  [7]: http://mansonchor.github.io/mobile_web_frame/images/button.png
