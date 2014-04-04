@@ -180,7 +180,7 @@ seajs.use(["base_package","frame_package"],function()
 它是系统链接页面的一个桥梁，也是页面与页面链接的桥梁
 
 
-- [**init( container , [options] )**](https://github.com/mansonchor/mobile_web_frame/blob/master/doc/page.init.md)  **初始化一个页面控制器**
+- [**init( container , [options] )**](https://github.com/mansonchor/mobile_web_frame/blob/master/doc/page_control.init.md)  **初始化一个页面控制器**
 
 - [**add_page( page_controler )**](https://github.com/mansonchor/mobile_web_frame/blob/master/doc/page_control.add_page.md)  **往控制器添加一个页面**
 
