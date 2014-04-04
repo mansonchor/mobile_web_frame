@@ -69,6 +69,25 @@ img { max-width: 100% }
 
 so，让我们拥抱扁平化吧！
 
+
+- **点击范围和反馈**
+
+![此处输入图片的描述][4]
+
+可以点击的元素，设计上不要做成传统文字链的形式，记住，你的用户不是用鼠标而是**手指**在操作
+
+舒适的点击范围和可点击的心理预期，对用户体验是极其重要的。[一篇点击范围的文章][5]
+
+针对可点击元素，要有4种状态：normal、active、loading、disabled
+
+![此处输入图片的描述][6]
+
+至少要有 normal、active 两种状态，因为一个按钮点下去没有反馈是很生硬的，优化好这些细节才能在使用过程感到流畅、友善
+
+
   [1]: http://mansonchor.github.io/mobile_web_frame/images/design_1.jpg
   [2]: http://mansonchor.github.io/mobile_web_frame/images/design_2.jpg
   [3]: http://mansonchor.github.io/mobile_web_frame/images/design_3.jpg
+  [4]: http://mansonchor.github.io/mobile_web_frame/images/tap_wave.jpg
+  [5]: http://elya.cc/2012/03/06/design-focus/
+  [6]: http://mansonchor.github.io/mobile_web_frame/images/button.png
