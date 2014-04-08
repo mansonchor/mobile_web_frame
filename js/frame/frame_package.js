@@ -56,6 +56,10 @@ define("frame/page",["ua",'base_package'],function(require, exports)
 				},300)
 				
 			},
+			$_ : function(selector)
+			{
+				return this.$el.find(selector)
+			},
 			events : options.events,
 			render : options.render,
 			page_show : options.page_show,
@@ -131,13 +135,15 @@ define("frame/page_control",['base_package',"ua"],function(require, exports){
 		after_route = options.after_route || ""
 
 		_original_container = original_container;
-
 		
-		//匹配修正跳转链接 没有带hash的情况  add by manson 2013.6.28
-		app_route.route("" , "" , function()
+		if(default_index_route)
 		{
-			that.navigate_to_page(default_index_route , {} , true)
-		})
+			//匹配修正跳转链接 没有带hash的情况  add by manson 2013.6.28
+			app_route.route("" , "" , function()
+			{
+				that.navigate_to_page(default_index_route , {} , true)
+			})
+		}
 	}
 	
 
@@ -147,7 +153,7 @@ define("frame/page_control",['base_package',"ua"],function(require, exports){
 		Backbone.history.start()
 	}
 	
-	exports.navigate_to_page = function(page , state , replace , transition )
+	exports.navigate_to_page = function( page , state , replace , transition )
 	{
 		if(page_is_transit) return
 
@@ -337,7 +343,7 @@ define("frame/page_control",['base_package',"ua"],function(require, exports){
 
 						if(typeof(page_view.page_init)=="function")
 						{
-							page_view.page_init.call(that,page_view,_page_params_arr,_temp_state);
+							page_view.page_init.call(that , page_view,_page_params_arr,_temp_state)
 						}
 					}
 
@@ -345,7 +351,7 @@ define("frame/page_control",['base_package',"ua"],function(require, exports){
 					from_view = _last_page_view
 
 					
-					var transition_type = index_view.transition_type;
+					var transition_type = index_view.transition_type
 
 					_start_page_transition(from_view , index_view , transition_type , false);
 
@@ -361,7 +367,7 @@ define("frame/page_control",['base_package',"ua"],function(require, exports){
 					else
 					{
 						//历史页面记录
-						_his_log_arr.push(index_view);
+						_his_log_arr.push(index_view)
 
 						//辅助记录历史浏览记录  add by manson 2013.4.12
 						_control_history_arr.push(url_hash)
@@ -675,15 +681,13 @@ define("frame/view_scroll",["base_package","ua"],function(require, exports){
 		var options = that.options || {}
 		var view_height = options.view_height || "100%"
         var use_lazyload = options.use_lazyload || false
+        var bounce = options.bounce || false
 
         var scroll_end = options.scroll_end || function(){}
 		var scroll_start = options.scroll_start || function(){}
-		
-
+		    
         var hideScrollbar = options.hideScrollbar==null ? true : options.hideScrollbar
 
-		
-		
 		$(scroll_view_obj).css('height' , view_height+'px')
 
 		
@@ -696,7 +700,7 @@ define("frame/view_scroll",["base_package","ua"],function(require, exports){
 			
 			var myScroll = new iscroll_class($(scroll_view_obj)[0],{
 				checkDOMChanges : true,
-				bounce : false,
+				bounce : bounce,
 				hideScrollbar : hideScrollbar,
                 useTransform: true,
 				useTransition : false,
