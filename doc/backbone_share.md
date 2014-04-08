@@ -5,7 +5,7 @@
 backbone提供了强大的对模型、视图和交互的抽象
 
 
-**数据模型（Model）**：负责数据模型，数据结构  （近年比较流行的 [RESTful][1] 架构思想）
+**数据模型（Model）**：负责数据模型，数据结构  
 
 **数据集合（Collection）**：一组数据的实体集合，负责数据模型的 GET、POST、PUT、DELETE操作
 
@@ -102,6 +102,17 @@ art_collection_obj.bind( 'reset' , art_view_obj.render )
 
 art_collection_obj.fetch()        //初次数据获取
 ```
+
+---
+
+## [Restful][1]
+
+REST的好处是简化了客户端和服务器的实现。后端只负责业务系统实现和对外提供资源URI；前端负责构建数据模型和控制数据交互，因为界面和交互前端比后端更熟悉
+
+利用backbone把数据结构迁移到前端，可以完整模拟Model和Collection的数据变化，完成业务流程的功能开发。而且不需要依赖和等待后端接口
+
+后端接收到前端的数据需求之后，提供对应返回格式的资源URI并完全接管里面的处理逻辑
+
 
 
   [1]: http://baike.baidu.com/link?url=-p0t6C5aaK3weBlY7gHztCFnHxFHIL1rxWOrHsKuu_WfcMDoFqR8zaQ-JfMg81lYJnnC2z4B9NqxHGhly7hPqK
