@@ -279,14 +279,13 @@ define("frame/page_control",['base_package',"ua"],function(require, exports){
 				//是返回操作
 				if(is_backward)
 				{
-					_his_log_arr.pop()
-					var from_view = _last_page_view
-					
-					var index_view = _his_log_arr[_his_log_arr.length - 1];
-
-
 					if(have_exist>0)
 					{
+						_his_log_arr.pop()
+						var from_view = _last_page_view
+						
+						var index_view = _his_log_arr[_his_log_arr.length - 1];
+
 						var transition_type = from_view.transition_type;
 
 						_start_page_transition(from_view , index_view , transition_type , true);
@@ -296,10 +295,65 @@ define("frame/page_control",['base_package',"ua"],function(require, exports){
 							index_view.$el.css({'top' : "0px" ,'zIndex' : 10000})
 						},10)
 
-						_last_page_view = index_view;
+						_last_page_view = index_view
+
+						_control_history_arr.pop()
+					}
+					else
+					{
+						var page_entity = page_controler.new_page_entity({ custom_tansition : navigate_custom_tansition , without_his : navigate_wihtout_his })
+						var page_view = page_entity.view()
+
+						page_view.$el.attr('page-url',url_hash);
+						
+
+						//新建页面
+						page_view.$el.css({
+							'visibility':'hidden',
+							'top' : "0px",
+							'zIndex' : zIndex
+						})
+						
+						zIndex++
+
+						
+						$(_original_container).prepend(page_view.$el)
+
+
+						//页面view缓存
+						_page_buff_arr[url_hash] = page_view
+						
+						
+						if(typeof(page_view.page_init)=="function")
+						{
+							page_view.page_init.call(that , page_view,_page_params_arr,_temp_state)
+						}
+						
+
+						var transition_type = page_view.transition_type
+
+						_start_page_transition(_last_page_view , page_view , transition_type , false)
+
+						
+						_last_page_view = page_view
+						
+						//特殊路由
+						if(page_view.without_his)
+						{
+							_his_log_arr[_his_log_arr.length - 1] = page_view
+							_control_history_arr[_control_history_arr.length - 1] = url_hash
+						}
+						else
+						{
+							//历史页面记录
+							_his_log_arr.push(page_view)
+
+							//辅助记录历史浏览记录  add by manson 2013.4.12
+							_control_history_arr.push(url_hash)
+						}
 					}
 
-					_control_history_arr.pop()
+					
 				}
 				else
 				{
