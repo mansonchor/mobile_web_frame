@@ -10,40 +10,19 @@ define("frame/page",["ua",'base_package'],function(require, exports)
 	
 	exports.new_page = function(options)
 	{
-		var that = this;
+		var Backbone = require('backbone')
 
-		return {
-			route : options.route,
-			view : function()
-			{
-				return that.new_view(options)
-			}
-		}
-	}
-
-	exports.new_view = function(options)
-	{
-		var Backbone = require('backbone');
+		var options = options || {}
 		var page_view_class = Backbone.View.extend
 		({
 			tagName :  "div",
 			className : "apps_page",
+			title : options.title,
+			manual_title : options.manual_title,
 			dom_not_cache : options.dom_not_cache,
 			transition_type : options.transition_type,
-			ignore_exist : options.ignore_exist,
-			without_his : options.without_his,
-			initialize : function()
-			{
-				if(typeof(options.initialize)=="function")
-				{
-					options.initialize.call(this)
-				}
-				
-				//this.$el.hammer()
-
-				//用hammer处理手机事件
-				//setup_hammer_event(this.$el,options.events)
-			},
+			ignore_exist : options.ignore_exist || false,
+			without_his : options.without_his || false,
 			events : options.events,
 			render : options.render,
 			page_show : options.page_show,
@@ -51,11 +30,38 @@ define("frame/page",["ua",'base_package'],function(require, exports)
 			page_back_show : options.page_back_show,
 			page_init : options.page_init,
 			window_change : options.window_change,
+			page_before_hide : options.page_before_hide,
 			page_hide : options.page_hide,
-			page_lock : false
+			page_lock : false,
+			initialize : function()
+			{
+				//转场防事件穿透遮罩层  add by manson 2014.3.5
+				this.$el.append('<div class="tran_cover"></div>')
+				
+				if(typeof(options.initialize)=="function")
+				{
+					options.initialize.call(this)
+				}
+			},
+			open_cover : function()
+			{
+				this.$_('.tran_cover').show()
+			},
+			close_cover : function()
+			{
+				var that = this
+				setTimeout(function(){
+					that.$_('.tran_cover').hide()
+				},300)
+				
+			},
+			$_ : function(selector)
+			{
+				return this.$el.find(selector)
+			}
 		})
 
-		return new page_view_class;
-	}
 
-});
+		return new page_view_class
+	}
+})
