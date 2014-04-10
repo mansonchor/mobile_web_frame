@@ -12,10 +12,9 @@ define('wo/user_profile',["base_package",'frame_package',"btn_package","commom_f
     var ua = require('ua')
     var popup = require('popup')
     var app_function = require('app_function')
-        
-	exports.route = { "user_profile/:query(/from_:source)": "user_profile" }
-            
-    exports.new_page_entity = function()
+    
+
+	function new_page_entity()
 	{
 		var _page_view
 		var view_scroll_obj
@@ -40,11 +39,12 @@ define('wo/user_profile',["base_package",'frame_package',"btn_package","commom_f
         var user_info_tag = 1;
         
 		var options = {
+			route : { "user_profile/:query(/from_:source)": "user_profile" },
 			title : '个人主页',
 			route : { "user_profile/:query": "user_profile" },
 			transition_type : 'slide',
 			dom_not_cache : true,
-			ignore_exist : true
+			ignore_exist : false
 		}
 
 		options.initialize = function()
@@ -159,77 +159,12 @@ define('wo/user_profile',["base_package",'frame_package',"btn_package","commom_f
                 
                 page_control.navigate_to_page("doorplate_list/"+user_id,{nick_name : nick_name})
             },
-			/*
-			//点击关闭文字箭头提示层
-			'tap [data_tigs_close]' : function()
-			{
-			    cur_page_view.find('.fade-page').hide() 
-				
-                cur_page_view.find('.tigs-pic-item').hide()
-	
-			},
-			*/
 			// 点击私信按钮弹出私信入口
 			'tap .ui-btn-letter' : function()
 			{
 				interact_module_view_obj.show()
 	
 			},
-			/*
-			//发私信
-			'tap [data-to-letter]' : function()
-			{
-				
-				
-				var user_id = _params_arr[0]
-                
-                var login_requirement = common_function.publish_login_requirement()
-                if(login_requirement)
-                {
-                    page_control.navigate_to_page("login") 
-                    
-                    return;
-                }
-                
-                click_message_tag = true; // 防止重复点击
-                
-                if(is_change_relation&&follow_status != "both")
-                {
-                    // 重新获取relation_id
-                    
-                    common_function.send_request
-                    ({
-                        url : wo_config.ajax_url.get_relation_id,
-                        data : {to_user_id : user_id},
-                        callback : function(data)
-                        {
-                            relation_id = data.result_data.relation_id;
-                            
-                            control_nav_to_message_list()
-                            
-                            click_message_tag = false
-                        }
-                    })
-                }
-                else
-                {
-                    control_nav_to_message_list()
-                    
-                    click_message_tag = false
-                }
-                
-			},
-			*/	
-			/*
-			//点击文字提示层
-            'tap .fade-page' : function()
-			{
-			    cur_page_view.find('.fade-page').hide() 
-				
-                cur_page_view.find('.tigs-pic-item').hide()
-				
-			},
-			*/
 			'tap [data-doorplate_last]' : function(ev)
 			{
 			    var cur_btn = $(ev.currentTarget)     
@@ -253,7 +188,7 @@ define('wo/user_profile',["base_package",'frame_package',"btn_package","commom_f
 			    popup_obj.close();
 			}
 			
-		};
+		}
 		
 
 		options.window_change = function(page_view)
@@ -774,7 +709,7 @@ define('wo/user_profile',["base_package",'frame_package',"btn_package","commom_f
 			_state = state
             _params_arr = params_arr
             
-            poco_id = common_function.get_local_poco_id();
+            poco_id = common_function.get_local_poco_id()
 			
 			cur_type_name = _params_arr[1]
 			
@@ -901,8 +836,6 @@ define('wo/user_profile',["base_package",'frame_package',"btn_package","commom_f
             data_pop_personal_obj = cur_page_view.find('[data-pop-personal]')                              
 					
 			control_switch("photos")		
-			     
-					
 		}
 		
         // 控制导航列表切换
@@ -938,6 +871,8 @@ define('wo/user_profile',["base_package",'frame_package',"btn_package","commom_f
 						append_html : '<div class="pics_count" style="display:none"><span data-pics_count=""></span>个精彩瞬间</div>',
                         onloading: function()
                         {
+							console.log(_page_view)
+
                             alert_tips = new_alert_v2.show({text:"加载中",type : "loading",is_cover : false ,append_target : _page_view.$el,auto_close_time:false});
                         },
                         onreset : function()
@@ -1206,11 +1141,11 @@ define('wo/user_profile',["base_package",'frame_package',"btn_package","commom_f
 
             popup_obj = popup.show_popup({ container : cur_page_view,html_str : html}) 
         }
-        
-		var page = require('page').new_page(options)
-		
-		return page
+
+		return options
 	}
+	
+	return new_page_entity
 })
 
 if(typeof(process_add)=="function")

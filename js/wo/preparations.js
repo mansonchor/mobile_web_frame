@@ -43,24 +43,11 @@ define("wo/preparations",["frame_package",'wo_config','commom_function','app_fun
 		fixed_header_pos(true,true)
 	})
 	
-	var poco_id = common_function.get_local_poco_id();
-	
-	var default_index_route = "";
-	
-	if(poco_id>0)
-	{
-	    default_index_route = wo_config.default_index_route;
-	}
-	else
-	{
-	    default_index_route = "font_page";
-	}
-
 	
 	var page_control = require('page_control')
 	page_control.init(page_container_obj,{
 		default_title : "世界·POCO",
-		default_index_route : default_index_route,
+		default_index_route : wo_config.default_index_route,
 		//页面PV统计
 		before_route : function()
 		{
@@ -81,7 +68,9 @@ define("wo/preparations",["frame_package",'wo_config','commom_function','app_fun
 	// 配置页面的key
 	var page_controller_arr = 
     [   
-        "about",
+		"category" , "last" , "user_profile" , "friend"
+
+        /*"about",
         "category", "charm_rank", "choose_my_image", "cmt", "cmt_notice","category_select",
         "dating_game", "dating_list", "doorplate_last", "doorplate_list","daily",
         "edit", "encounter_game", "event", 
@@ -97,7 +86,7 @@ define("wo/preparations",["frame_package",'wo_config','commom_function','app_fun
         "search_result", "send_gift", "set_location", "setup","same_city", 
         "theme_join_user_list", "theme_pic_list","theme_act",
         "user_photo", "user_profile", 
-        "wealth_rank", "weixin_callback","world_daliy"
+        "wealth_rank", "weixin_callback","world_daliy"*/
     ]
 	
 	//add_page方法改进  modify by manson 2014.4.9

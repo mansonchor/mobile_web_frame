@@ -10,12 +10,10 @@ define("wo/last",["base_package",'frame_package',"btn_package","commom_function"
 	var select_module_class = require("select_module")()
 	var app_function = require('app_function')
 	
-	exports.route = { "last/:art_id(/from_:source)": "last" }
-	
-	
-	exports.new_page_entity = function(custom_options)
-	{
-	    var alert_tips ;
+
+	function new_page_entity()
+    {
+		var alert_tips ;
         
         var select_module_class = require("select_module")()
         
@@ -51,7 +49,9 @@ define("wo/last",["base_package",'frame_package',"btn_package","commom_function"
 		})
 
 		var custom_options = custom_options || {}
+
 		var options = {
+			route : { "last/:art_id(/from_:source)": "last" },
 			manual_title : true,
 			transition_type : custom_options.custom_tansition || 'slide',
 			without_his : custom_options.without_his,
@@ -917,10 +917,11 @@ define("wo/last",["base_package",'frame_package',"btn_package","commom_function"
         }
 
         */
-		var page = require('page').new_page(options)
 		
-		return page
+		return options
 	}
+
+	return new_page_entity
 })
 
 if(typeof(process_add)=="function")

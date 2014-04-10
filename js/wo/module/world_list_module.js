@@ -552,7 +552,7 @@ define("wo/module/world_list_module", [ "base_package", "commom_function" ,'fram
 
 					//(this.photowall_item_type !="")? "/from_"+this.photowall_item_type : ""
 					
-					page_control.navigate_to_page("#last/" + this.art_id + source_url,{cover_img_width : this.cover_img_width,cover_img_height : this.cover_img_height,btn_love_obj : this.btn_love_obj,photo_txt_view : this.$el })
+					page_control.navigate_to_page("#last/" + this.art_id,{cover_img_width : this.cover_img_width,cover_img_height : this.cover_img_height,btn_love_obj : this.btn_love_obj,photo_txt_view : this.$el })
 				},
 				'hold [data-anchor]' : function()
 				{

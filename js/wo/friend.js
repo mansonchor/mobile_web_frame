@@ -9,13 +9,13 @@ define("wo/friend",["base_package",'frame_package',"btn_package","wo_config","co
 	var notice = require('notice')
     var cookies = require('cookies')
 	
-    var cookie_duration = 24*3				//3天cookie
-	
-	exports.route = { "friend": "friend" }
 
-	exports.new_page_entity = function()
+	function new_page_entity()
 	{
+		var cookie_duration = 24*3				//3天cookie
+
 		var options = {
+			route : { "friend": "friend" },
 			title : "好友照片",
 			route : { "friend": "friend" },		
 			transition_type : 'none'        
@@ -318,10 +318,10 @@ define("wo/friend",["base_package",'frame_package',"btn_package","wo_config","co
 		}*/
         
 
-		var page = require('page').new_page(options);
-		
-		return page;
+		return options
 	}
+    
+	return new_page_entity
 })
 
 if(typeof(process_add)=="function")

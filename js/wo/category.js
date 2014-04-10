@@ -9,12 +9,11 @@ define("wo/category",["base_package",'frame_package',"btn_package","wo_config","
 	var notice = require('notice')
     var cookies = require('cookies')
 	
-    
-	exports.route = { "category/:cat_conf_id(/:art_id)(/:default_select)": "category" }
 
-	exports.new_page_entity = function()
-	{
-		var options = {
+    function new_page_entity()
+    {
+    	var options = {
+			route : { "category/:cat_conf_id(/:art_id)(/:default_select)": "category" },
 			manual_title : true,
 			transition_type : 'slide',
 			dom_not_cache : true,
@@ -23,7 +22,7 @@ define("wo/category",["base_package",'frame_package',"btn_package","wo_config","
 
 		options.initialize = function()
 		{
-			this.render();
+			this.render()
 		}
 		
 		var footer_view_obj
@@ -60,7 +59,6 @@ define("wo/category",["base_package",'frame_package',"btn_package","wo_config","
 			'tap .ui-btn-refresh-wrap' : function()
 			{
 				if(page_control.page_transit_status()) return false				                                                                
-                
                 world_list_module_obj.start_reset()
 			},
 			'tap [hot_select_btn]' : function()
@@ -236,11 +234,11 @@ define("wo/category",["base_package",'frame_package',"btn_package","wo_config","
 			}
 		}
 
-		var page = require('page').new_page(options);
-		
-		return page;
-	}
-});
+		return options
+    }
+
+	return new_page_entity
+})
 
 if(typeof(process_add)=="function")
 {

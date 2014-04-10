@@ -713,7 +713,7 @@ define("wo/cmt",['base_package','frame_package',"btn_package","wo_config","commo
 			}
 		}
         
-		var page = require("page").new_page(options);
+		var page = require("page").new_page(options)
 		return page;
 	}
 })
