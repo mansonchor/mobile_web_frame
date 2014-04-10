@@ -44,12 +44,12 @@ define('wo/user_profile',["base_package",'frame_package',"btn_package","commom_f
 			route : { "user_profile/:query": "user_profile" },
 			transition_type : 'slide',
 			dom_not_cache : true,
-			ignore_exist : false
+			ignore_exist : true
 		}
 
 		options.initialize = function()
 		{
-			this.render();
+			this.render()
 		}
 
 		options.render = function()

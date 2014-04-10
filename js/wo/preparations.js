@@ -68,7 +68,7 @@ define("wo/preparations",["frame_package",'wo_config','commom_function','app_fun
 	// 配置页面的key
 	var page_controller_arr = 
     [   
-		"category" , "last" , "user_profile" , "friend"
+		"category" , "last" , "user_profile" , "friend" , "index"
 
         /*"about",
         "category", "charm_rank", "choose_my_image", "cmt", "cmt_notice","category_select",

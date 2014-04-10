@@ -180,7 +180,7 @@ define("wo/module/world_list_module", [ "base_package", "commom_function" ,'fram
 			events : {
 				'tap .art-user-info' : function()
 				{
-					if(page_control.page_lock_status()) return false
+					//if(page_control.page_lock_status()) return false
 		
 					page_control.navigate_to_page("user_profile/"+this.user_id)
 				},
@@ -452,7 +452,7 @@ define("wo/module/world_list_module", [ "base_package", "commom_function" ,'fram
 			//操作UI交互和数据交换封装
 			like_action : function()
 			{
-				if(page_control.page_lock_status()) return false
+				//if(page_control.page_lock_status()) return false
 		
 				var that = this
 		
@@ -614,7 +614,7 @@ define("wo/module/world_list_module", [ "base_package", "commom_function" ,'fram
 				},
 				'tap .love-div' : function()
 				{
-					if(page_control.page_lock_status()) return false
+					//if(page_control.page_lock_status()) return false
 
 					var that = this
 					

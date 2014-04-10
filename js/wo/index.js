@@ -17,13 +17,15 @@ define("wo/index",["base_package",'frame_package',"btn_package","commom_function
 	var new_alert_v2 = require("new_alert_v2")
 	var carousel = require('carousel') 
 
-	var page_count = 20
+	
+	
 
-	exports.route = { "index": "index"  }
-
-	exports.new_page_entity = function()
+	function new_page_entity()
 	{
+		var page_count = 20
+
 		var options = {
+			route : { "index": "index"  },
 			transition_type : 'none'
 		}
 
@@ -418,11 +420,10 @@ define("wo/index",["base_package",'frame_package',"btn_package","commom_function
              return scale_rate
         }
         
-                
-		var page = require('page').new_page(options);
-		
-		return page;
-	}	
+		return options
+	}
+
+	return new_page_entity
 })
 
 if(typeof(process_add)=="function")

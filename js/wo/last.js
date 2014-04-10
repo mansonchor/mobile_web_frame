@@ -11,7 +11,7 @@ define("wo/last",["base_package",'frame_package',"btn_package","commom_function"
 	var app_function = require('app_function')
 	
 
-	function new_page_entity()
+	function new_page_entity(custom_options)
     {
 		var alert_tips ;
         
