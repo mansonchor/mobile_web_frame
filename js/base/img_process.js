@@ -21,7 +21,7 @@ define('base/img_process',['megapix_img','exif','ua'],function(require, exports)
 			var mpImg = new megapix_img(img_file);
 			var temp_img = new Image()
 			mpImg.render(temp_img, { type : type , maxWidth: max_width, maxHeight: max_height, quality: quality , orientation: img_orientation ,render_callback : callback } )
-		});
+		})
 	}
 
 
@@ -48,9 +48,6 @@ define('base/img_process',['megapix_img','exif','ua'],function(require, exports)
 		var ios_can_select_img = ua.ios_version < "6.0"
 		var is_weixin_android = typeof(WeixinJSBridge)!="undefined" && ua.isAndroid
 
-		console.log(not_support_process)
-		console.log(ios_can_select_img)
-			console.log(is_weixin_android)
 
 		if(not_support_process || ios_can_select_img || is_weixin_android)
 		{

@@ -8,7 +8,7 @@ define('base/ua',['base_package'],function(require, exports)
 	var app_version = nav.appVersion
 	
 	//访问来自手机 
-	ua.isMobile = (/(iphone|ipod|android|ios|ipad|nokia|blackberry|tablet|symbian)/).test(nav.userAgent.toLowerCase());
+	ua.isMobile = (/(iphone|ipod|android|ios|ipad|nokia|blackberry|tablet|symbian)/).test(nav.userAgent.toLowerCase())
 	
 	//手机系统
 	ua.isAndroid = (/android/gi).test(app_version)

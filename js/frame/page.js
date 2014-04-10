@@ -28,33 +28,21 @@ define("frame/page",["ua",'base_package'],function(require, exports)
 		({
 			tagName :  "div",
 			className : "apps_page",
-			title : options.title,
-			manual_title : options.manual_title,
 			dom_not_cache : options.dom_not_cache,
 			transition_type : options.transition_type,
 			ignore_exist : options.ignore_exist,
-			without_his : options.without_his || false,
+			without_his : options.without_his,
 			initialize : function()
 			{
-				//转场防事件穿透遮罩层  add by manson 2014.3.5
-				this.$el.append('<div class="tran_cover"></div>')
-				
 				if(typeof(options.initialize)=="function")
 				{
 					options.initialize.call(this)
 				}
-			},
-			open_cover : function()
-			{
-				this.$el.find('.tran_cover').show()
-			},
-			close_cover : function()
-			{
-				var that = this
-				setTimeout(function(){
-					that.$el.find('.tran_cover').hide()
-				},300)
 				
+				//this.$el.hammer()
+
+				//用hammer处理手机事件
+				//setup_hammer_event(this.$el,options.events)
 			},
 			events : options.events,
 			render : options.render,
@@ -63,7 +51,6 @@ define("frame/page",["ua",'base_package'],function(require, exports)
 			page_back_show : options.page_back_show,
 			page_init : options.page_init,
 			window_change : options.window_change,
-			page_before_hide : options.page_before_hide,
 			page_hide : options.page_hide,
 			page_lock : false
 		})

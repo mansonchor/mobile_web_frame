@@ -2,7 +2,7 @@
   *	 页面导航 + 转场控制
   */
 define("frame/page_control",['base_package',"ua"],function(require, exports){	
-	
+	//req!!uire('page_control_css');
 
 	var Backbone = require('backbone')
 	var $ = require('zepto')
@@ -22,13 +22,10 @@ define("frame/page_control",['base_package',"ua"],function(require, exports){
 	var TO_PAGE_VIEW = {}
 	var FROM_PAGE_VIEW = {}
 	var default_index_route
-	var default_title
 	var before_route
 	var after_route
 	
 	var is_backward = null
-	var navigate_wihtout_his = null
-	var navigate_custom_tansition = null
 	
 	var page_is_transit = false
 	var page_is_lock = false
@@ -51,7 +48,6 @@ define("frame/page_control",['base_package',"ua"],function(require, exports){
 		var that = this
 		var options = options || {}
 		default_index_route = options.default_index_route || ""
-		default_title = options.default_title || ""
 		before_route = options.before_route || ""
 		after_route = options.after_route || ""
 
@@ -61,7 +57,7 @@ define("frame/page_control",['base_package',"ua"],function(require, exports){
 		//匹配修正跳转链接 没有带hash的情况  add by manson 2013.6.28
 		app_route.route("" , "" , function()
 		{
-			that.navigate_to_page(default_index_route , {} , true)
+			that.navigate_to_page(default_index_route)
 		})
 	}
 	
@@ -72,23 +68,15 @@ define("frame/page_control",['base_package',"ua"],function(require, exports){
 		Backbone.history.start()
 	}
 	
-	exports.navigate_to_page = function(page , state , replace , transition )
+	exports.navigate_to_page = function(page , state)
 	{
 		if(page_is_transit) return
 
 		_temp_state = state
 
 		_move = "forward"
-		
-		//window.location.hash = page
-		var replace = (replace==null) ? false : replace
-		var trigger = (trigger==null) ? true: trigger
 
-		navigate_wihtout_his = replace
-
-		navigate_custom_tansition = (transition==null) ? false : transition
-
-		app_route.navigate(page ,{trigger: true, replace: replace} )
+		app_route.navigate(page ,{trigger: true, replace: false} );
 	}
 
 	exports.back = function()
@@ -100,11 +88,6 @@ define("frame/page_control",['base_package',"ua"],function(require, exports){
 			if(default_index_route!="")
 			{
 				this.navigate_to_page(default_index_route)
-
-				setTimeout(function()
-				{
-					FROM_PAGE_VIEW.remove()
-				},1000)
 			}
 
 			return false
@@ -158,8 +141,7 @@ define("frame/page_control",['base_package',"ua"],function(require, exports){
 	{
 		return page_is_transit
 	}
-	
-	var zIndex = 10000
+
 
 	exports.add_page = function(page_controler)
 	{
@@ -198,8 +180,7 @@ define("frame/page_control",['base_package',"ua"],function(require, exports){
 				//是返回操作
 				if(is_backward)
 				{
-					_his_log_arr.pop()
-					var from_view = _last_page_view
+					var from_view = _his_log_arr.pop();
 					
 					var index_view = _his_log_arr[_his_log_arr.length - 1];
 
@@ -214,6 +195,7 @@ define("frame/page_control",['base_package',"ua"],function(require, exports){
 						setTimeout(function(){
 							index_view.$el.css({'top' : "0px" ,'zIndex' : 10000})
 						},10)
+						
 
 						_last_page_view = index_view;
 					}
@@ -235,8 +217,10 @@ define("frame/page_control",['base_package',"ua"],function(require, exports){
 						//每个页面都形成一个实体类，操作全在自己的闭包内进行
 						//更加安全，无作用域影响问题  
 						//modify by manson 2013.5.25
-						var page_entity = page_controler.new_page_entity({ custom_tansition : navigate_custom_tansition , without_his : navigate_wihtout_his })
+						var page_entity = page_controler.new_page_entity()
 						var page_view = page_entity.view()
+
+						console.log(page_view)
 
 						page_view.$el.attr('page-url',url_hash);
 						
@@ -245,13 +229,11 @@ define("frame/page_control",['base_package',"ua"],function(require, exports){
 						page_view.$el.css({
 							'visibility':'hidden',
 							'top' : "0px",
-							'zIndex' : zIndex
-						})
-						
-						zIndex++
+							'zIndex' : 10000
+						});
 
 						
-						$(_original_container).prepend(page_view.$el);
+						$(_original_container).append(page_view.$el);
 
 						index_view = page_view;
 						
@@ -276,23 +258,13 @@ define("frame/page_control",['base_package',"ua"],function(require, exports){
 
 					_last_page_view = index_view;
 					
+					//历史页面记录
+					_his_log_arr.push(index_view);
 
-					//特殊路由
-					if(index_view.without_his)
-					{
-						_his_log_arr[_his_log_arr.length - 1] = index_view
-						_control_history_arr[_control_history_arr.length - 1] = url_hash
-					}
-					else
-					{
-						//历史页面记录
-						_his_log_arr.push(index_view);
-
-						//辅助记录历史浏览记录  add by manson 2013.4.12
-						_control_history_arr.push(url_hash)
-					}
-					
+					//辅助记录历史浏览记录  add by manson 2013.4.12
+					_control_history_arr.push(url_hash)
 				}
+				
 
 				if(typeof(after_route)=="function")
 				{
@@ -312,7 +284,6 @@ define("frame/page_control",['base_package',"ua"],function(require, exports){
 		if(history_length > 1)
 		{
 			var last_two_url = _control_history_arr[history_length-2]
-			
 
 			if(_move!="forward" && last_two_url==url_hash)
 			{
@@ -351,20 +322,9 @@ define("frame/page_control",['base_package',"ua"],function(require, exports){
 		//页面即将进入转场前触发   add by manson 2013.5.30
 		if(typeof(to_page_view.page_before_show)=="function")
 		{
-			to_page_view.page_before_show.call(that,to_page_view,_page_params_arr,_temp_state);
-		}
-		
-		if(from_page_view)
-		{
-			from_page_view.open_cover()
+			to_page_view.page_before_show.call(that,to_page_view,_page_params_arr);
 		}
 
-		//上一页面即将离开转场前触发   add by manson 2013.7.31
-		if(from_page_view && typeof(from_page_view.page_before_hide)=="function")
-		{
-			from_page_view.page_before_hide.call(that,from_page_view);
-		}
-		
 
 		switch(transition_type)
 		{
@@ -374,23 +334,6 @@ define("frame/page_control",['base_package',"ua"],function(require, exports){
 				{
 					to_page_element_keyframe = 'slideinfromright';
 					from_page_element_keyframe = 'slideoutfromleft';
-				}
-				else
-				{
-					to_page_element_keyframe = 'slideinfromleft';
-					from_page_element_keyframe = 'slideoutfromright';
-				}
-
-				animation_timing_function = __ease_timingfunction;
-				animation_duration = __slide_transition_time;
-
-				break;
-			case "slide_reverse" :
-				
-				if(!is_back)
-				{
-					to_page_element_keyframe = 'slideinfromleft';
-					from_page_element_keyframe = 'slideoutfromright';
 				}
 				else
 				{
@@ -444,13 +387,13 @@ define("frame/page_control",['base_package',"ua"],function(require, exports){
 		//正在转场
 		page_is_transit = true
 		
-		
 		if(to_page_element_keyframe)
 		{
 			
 			var to_page_element = to_page_view.el;
 			TO_PAGE_VIEW = to_page_view;
 
+			//to_page_element.removeEventListener('webkitAnimationEnd',__tansition_end_page_dom_control,false);
 
 			//进场页面
 			to_page_element.style.webkitAnimationDuration = animation_duration;
@@ -462,11 +405,16 @@ define("frame/page_control",['base_package',"ua"],function(require, exports){
 			to_page_element.style.webkitAnimationName = to_page_element_keyframe;
 			
 
+			
+
 			//退场页面
 			if(from_page_view)
 			{
 				var from_page_element = from_page_view.el;
 				FROM_PAGE_VIEW = from_page_view
+
+				//from_page_element.removeEventListener('webkitAnimationEnd',__tansition_end_page_dom_control,false);
+				//from_page_element.addEventListener('webkitAnimationEnd',__tansition_end_page_dom_control, false);
 
 				from_page_element.style.webkitAnimationDuration = animation_duration;
 				from_page_element.style.webkitAnimationTimingFunction = animation_timing_function;
@@ -481,73 +429,60 @@ define("frame/page_control",['base_package',"ua"],function(require, exports){
 
 			setTimeout(function()
 			{
-				TO_PAGE_VIEW.close_cover()
-
 				if(typeof(TO_PAGE_VIEW.page_back_show)=="function" && is_backward)
 				{
-					TO_PAGE_VIEW.page_back_show.call(that,TO_PAGE_VIEW,_page_params_arr,_temp_state);
+					TO_PAGE_VIEW.page_back_show.call(that,TO_PAGE_VIEW,_page_params_arr);
 				}
+
 
 				if(typeof(TO_PAGE_VIEW.page_show)=="function")
 				{
 					TO_PAGE_VIEW.page_show.call(that,TO_PAGE_VIEW,_page_params_arr,_temp_state);
 				}
 
+
 				__tansition_end_page_dom_control()
-				
+
 			},parseInt(animation_duration))
+			
+			/*if(to_page_element_keyframe=="none")
+			{
+				__tansition_end_page_dom_control()
+			}*/
+			
+			
 		}
 		
 	}
 
 	function __tansition_end_page_dom_control()
 	{
-		page_is_transit = false
-
+		
 		var that = this;
 
 		var from_page_element = FROM_PAGE_VIEW.el;
 		var to_page_element = TO_PAGE_VIEW.el;
 		
-
-		//页面转换动态改变title   add by manson 2013.11.15
-		if(TO_PAGE_VIEW.manual_title!=true)
-		{
-			if(TO_PAGE_VIEW.title)
-			{
-				document.title = TO_PAGE_VIEW.title
-			}
-			else
-			{
-				document.title = default_title
-			}
-		}
 		
-			
 		if(from_page_element)
 		{
 			//from_page_element.style.visibility = 'hidden';
 			
 			$(from_page_element).css({'top' : "-3000px"});
 			
-			if(typeof(FROM_PAGE_VIEW.page_hide)=="function")
-			{
-				FROM_PAGE_VIEW.page_hide.call(that)
-			}
 			
 			//移除页面
 			if(FROM_PAGE_VIEW.dom_not_cache==true && is_backward)
 			{
-				FROM_PAGE_VIEW && FROM_PAGE_VIEW.remove()
-			}
-			
-			if(TO_PAGE_VIEW.without_his)
-			{
+				
 				FROM_PAGE_VIEW && FROM_PAGE_VIEW.remove()
 			}
 		}
-		
+	
 
+		page_is_transit = false
+		
+		
 		_clear_dom = null
 		_move = null
 

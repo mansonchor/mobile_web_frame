@@ -242,200 +242,212 @@ define("frame/page_control",['base_package',"ua"],function(require, exports){
 	
 	var zIndex = 10000
 
-	exports.add_page = function(page_controler)
+	exports.add_page = function(page_controller_arr)
 	{
-		var that = this;
-		var route = page_controler.route || {};
+		var that = this
 		
-		for (key in route)
+		
+		$(page_controller_arr).each(function(i , page_string)
 		{
-			app_route.route(key , route[key] , function(params,params_2,params_3)
+			var page_controler = require(page_string)
+			
+			page_controler = page_controler || {}
+			var route = page_controler.route || false
+			
+			if(route)
 			{
-				//修正兼容用浏览器前进后退的情况  add by manson 2013.7.23
-				if(page_is_transit) return
-
-				_page_params_arr = []
-				_page_params_arr.push(params)
-				_page_params_arr.push(params_2)
-				_page_params_arr.push(params_3)
-
-
-				var url_hash = location.href
-				
-
-				if(typeof(before_route)=="function")
+				for (key in route)
 				{
-					before_route.call(that)
-				}
-
-				
-				var have_exist = false;
-				var have_exist = $(_original_container).find('[page-url="'+url_hash+'"]').length;
-				
-
-				is_backward = check_route_is_backward()
-
-				
-				//是返回操作
-				if(is_backward)
-				{
-					if(have_exist>0)
+					app_route.route(key , route[key] , function(params,params_2,params_3)
 					{
-						_his_log_arr.pop()
-						var from_view = _last_page_view
-						
-						var index_view = _his_log_arr[_his_log_arr.length - 1];
+						//修正兼容用浏览器前进后退的情况  add by manson 2013.7.23
+						if(page_is_transit) return
 
-						var transition_type = from_view.transition_type;
+						_page_params_arr = []
+						_page_params_arr.push(params)
+						_page_params_arr.push(params_2)
+						_page_params_arr.push(params_3)
 
-						_start_page_transition(from_view , index_view , transition_type , true);
-						
 
-						setTimeout(function(){
-							index_view.$el.css({'top' : "0px" ,'zIndex' : 10000})
-						},10)
-
-						_last_page_view = index_view
-
-						_control_history_arr.pop()
-					}
-					else
-					{
-						var page_entity = page_controler.new_page_entity({ custom_tansition : navigate_custom_tansition , without_his : navigate_wihtout_his })
-						var page_view = page_entity.view()
-
-						page_view.$el.attr('page-url',url_hash);
+						var url_hash = location.href
 						
 
-						//新建页面
-						page_view.$el.css({
-							'visibility':'hidden',
-							'top' : "0px",
-							'zIndex' : zIndex
-						})
-						
-						zIndex++
-
-						
-						$(_original_container).prepend(page_view.$el)
-
-
-						//页面view缓存
-						_page_buff_arr[url_hash] = page_view
-						
-						
-						if(typeof(page_view.page_init)=="function")
+						if(typeof(before_route)=="function")
 						{
-							page_view.page_init.call(that , page_view,_page_params_arr,_temp_state)
+							before_route.call(that)
 						}
-						
-
-						var transition_type = page_view.transition_type
-
-						_start_page_transition(_last_page_view , page_view , transition_type , false)
 
 						
-						_last_page_view = page_view
+						var have_exist = false;
+						var have_exist = $(_original_container).find('[page-url="'+url_hash+'"]').length;
 						
-						//特殊路由
-						if(page_view.without_his)
+
+						is_backward = check_route_is_backward()
+
+						
+						//是返回操作
+						if(is_backward)
 						{
-							_his_log_arr[_his_log_arr.length - 1] = page_view
-							_control_history_arr[_control_history_arr.length - 1] = url_hash
+							if(have_exist>0)
+							{
+								_his_log_arr.pop()
+								var from_view = _last_page_view
+								
+								var index_view = _his_log_arr[_his_log_arr.length - 1];
+
+								var transition_type = from_view.transition_type;
+
+								_start_page_transition(from_view , index_view , transition_type , true);
+								
+
+								setTimeout(function(){
+									index_view.$el.css({'top' : "0px" ,'zIndex' : 10000})
+								},10)
+
+								_last_page_view = index_view
+
+								_control_history_arr.pop()
+							}
+							else
+							{
+								var page_entity = page_controler.new_page_entity({ custom_tansition : navigate_custom_tansition , without_his : navigate_wihtout_his })
+								var page_view = page_entity.view()
+
+								page_view.$el.attr('page-url',url_hash);
+								
+
+								//新建页面
+								page_view.$el.css({
+									'visibility':'hidden',
+									'top' : "0px",
+									'zIndex' : zIndex
+								})
+								
+								zIndex++
+
+								
+								$(_original_container).prepend(page_view.$el)
+
+
+								//页面view缓存
+								_page_buff_arr[url_hash] = page_view
+								
+								
+								if(typeof(page_view.page_init)=="function")
+								{
+									page_view.page_init.call(that , page_view,_page_params_arr,_temp_state)
+								}
+								
+
+								var transition_type = page_view.transition_type
+
+								_start_page_transition(_last_page_view , page_view , transition_type , false)
+
+								
+								_last_page_view = page_view
+								
+								//特殊路由
+								if(page_view.without_his)
+								{
+									_his_log_arr[_his_log_arr.length - 1] = page_view
+									_control_history_arr[_control_history_arr.length - 1] = url_hash
+								}
+								else
+								{
+									//历史页面记录
+									_his_log_arr.push(page_view)
+
+									//辅助记录历史浏览记录  add by manson 2013.4.12
+									_control_history_arr.push(url_hash)
+								}
+							}
+
+							
 						}
 						else
 						{
-							//历史页面记录
-							_his_log_arr.push(page_view)
+							var index_view = _page_buff_arr[url_hash] 
 
-							//辅助记录历史浏览记录  add by manson 2013.4.12
-							_control_history_arr.push(url_hash)
+							if(have_exist>0 && !index_view.ignore_exist)
+							{
+								index_view.$el.css({'top' : "0px"})
+							}
+							else
+							{
+								//var page_view = page_controler.view();
+								
+								//每个页面都形成一个实体类，操作全在自己的闭包内进行
+								//更加安全，无作用域影响问题  
+								//modify by manson 2013.5.25
+								var page_entity = page_controler.new_page_entity({ custom_tansition : navigate_custom_tansition , without_his : navigate_wihtout_his })
+								var page_view = page_entity.view()
+
+								page_view.$el.attr('page-url',url_hash);
+								
+
+								//新建页面
+								page_view.$el.css({
+									'visibility':'hidden',
+									'top' : "0px",
+									'zIndex' : zIndex
+								})
+								
+								zIndex++
+
+								
+								$(_original_container).prepend(page_view.$el);
+
+								index_view = page_view;
+								
+								//页面view缓存
+								_page_buff_arr[url_hash] = page_view;
+								
+								
+
+								if(typeof(page_view.page_init)=="function")
+								{
+									page_view.page_init.call(that , page_view,_page_params_arr,_temp_state)
+								}
+							}
+
+							
+							from_view = _last_page_view
+
+							
+							var transition_type = index_view.transition_type
+
+							_start_page_transition(from_view , index_view , transition_type , false);
+
+							_last_page_view = index_view;
+							
+
+							//特殊路由
+							if(index_view.without_his)
+							{
+								_his_log_arr[_his_log_arr.length - 1] = index_view
+								_control_history_arr[_control_history_arr.length - 1] = url_hash
+							}
+							else
+							{
+								//历史页面记录
+								_his_log_arr.push(index_view)
+
+								//辅助记录历史浏览记录  add by manson 2013.4.12
+								_control_history_arr.push(url_hash)
+							}
+							
 						}
-					}
 
-					
-				}
-				else
-				{
-					var index_view = _page_buff_arr[url_hash] 
-
-					if(have_exist>0 && !index_view.ignore_exist)
-					{
-						index_view.$el.css({'top' : "0px"})
-					}
-					else
-					{
-						//var page_view = page_controler.view();
-						
-						//每个页面都形成一个实体类，操作全在自己的闭包内进行
-						//更加安全，无作用域影响问题  
-						//modify by manson 2013.5.25
-						var page_entity = page_controler.new_page_entity({ custom_tansition : navigate_custom_tansition , without_his : navigate_wihtout_his })
-						var page_view = page_entity.view()
-
-						page_view.$el.attr('page-url',url_hash);
-						
-
-						//新建页面
-						page_view.$el.css({
-							'visibility':'hidden',
-							'top' : "0px",
-							'zIndex' : zIndex
-						})
-						
-						zIndex++
-
-						
-						$(_original_container).prepend(page_view.$el);
-
-						index_view = page_view;
-						
-						//页面view缓存
-						_page_buff_arr[url_hash] = page_view;
-						
-						
-
-						if(typeof(page_view.page_init)=="function")
+						if(typeof(after_route)=="function")
 						{
-							page_view.page_init.call(that , page_view,_page_params_arr,_temp_state)
+							after_route.call(that)
 						}
-					}
 
-					
-					from_view = _last_page_view
-
-					
-					var transition_type = index_view.transition_type
-
-					_start_page_transition(from_view , index_view , transition_type , false);
-
-					_last_page_view = index_view;
-					
-
-					//特殊路由
-					if(index_view.without_his)
-					{
-						_his_log_arr[_his_log_arr.length - 1] = index_view
-						_control_history_arr[_control_history_arr.length - 1] = url_hash
-					}
-					else
-					{
-						//历史页面记录
-						_his_log_arr.push(index_view)
-
-						//辅助记录历史浏览记录  add by manson 2013.4.12
-						_control_history_arr.push(url_hash)
-					}
-					
+					})
 				}
+			}
+		})
 
-				if(typeof(after_route)=="function")
-				{
-					after_route.call(that)
-				}
-
-			})
-		}
 	}
 
 
