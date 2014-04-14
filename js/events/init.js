@@ -10,7 +10,7 @@ define(function(require, exports)
 
 	var index_page = require('events/index')
 	
-	page_control.add_page(index_page)
+	page_control.add_page([index_page])
 	
 	page_control.route_start()
 })

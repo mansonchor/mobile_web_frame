@@ -3,11 +3,10 @@ define(function(require, exports)
 	var $ = require('zepto')
 	var page_control = require('page_control')
 	
-	exports.route = { "out": "out"  }
-
-	exports.new_page_entity = function()
+	function new_page_entity()
 	{
 		var options = {
+			route : { "out": "out"  },
 			transition_type : 'slide'
 		}
 		
@@ -18,17 +17,17 @@ define(function(require, exports)
 
 		options.page_init = function()
 		{
-			alert('page_init')
+			alert('out page_init')
 		}
 		
 		options.page_before_hide = function()
 		{
-			alert('page_before_hide')
+			alert('out page_before_hide')
 		}
 
 		options.page_hide = function()
 		{
-			alert('page_hide')
+			alert('out page_hide')
 		}
 		
 		options.events = {
@@ -38,8 +37,8 @@ define(function(require, exports)
 			}
 		}
 		     
-		var page = require('page').new_page(options);
-		
-		return page;
+		return options
 	}	
+
+	return new_page_entity
 })

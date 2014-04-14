@@ -69,7 +69,7 @@ define("frame/page",["ua",'base_package'],function(require, exports)
 /**
   *	 页面导航 + 转场控制
   */
-define("frame/page_control",['base_package',"ua"],function(require, exports){	
+define("frame/page_control",['base_package',"ua","frame_package"],function(require, exports){	
 	
 	var Backbone = require('backbone')
 	var $ = require('zepto')
@@ -225,14 +225,11 @@ define("frame/page_control",['base_package',"ua"],function(require, exports){
 	{
 		var that = this
 		
-		$(page_controller_arr).each(function(i , page_string)
+		$(page_controller_arr).each(function(i , page_entity)
 		{
-			var page_entity = require(page_string)
-
 			if(!IS_FUNCTION(page_entity)) return true
 
 			var page_options = page_entity()
-			var page_obj = page_class.new_page(page_options)
 
 			var route = page_options.route || false
 
@@ -242,7 +239,7 @@ define("frame/page_control",['base_package',"ua"],function(require, exports){
 				{
 					APP_ROUTE.route(key , route[key] , function(params,params_2,params_3)
 					{
-						trriger_page_route(page_obj,page_entity,params,params_2,params_3)
+						trriger_page_route(page_options,page_entity,params,params_2,params_3)
 					})
 				}
 			}
@@ -276,7 +273,7 @@ define("frame/page_control",['base_package',"ua"],function(require, exports){
 		return new_page_view
 	}
 
-	function trriger_page_route(page_view,page_entity,params,params_2,params_3)
+	function trriger_page_route(page_options,page_entity,params,params_2,params_3)
 	{
 		var that = this
 
@@ -304,7 +301,7 @@ define("frame/page_control",['base_package',"ua"],function(require, exports){
 		//前进操作
 		if(!IS_BACKWARD)
 		{
-			if(have_exist && !page_view.ignore_exist)
+			if(have_exist && !page_options.ignore_exist)
 			{
 				var exist_view = SEARCH_PAGE_IN_BUFF(url_hash)
 
@@ -650,6 +647,7 @@ define("frame/page_control",['base_package',"ua"],function(require, exports){
 		IS_BACKWARD = null
 	}
 })
+
 
 
 define("frame/view_scroll",["base_package","ua"],function(require, exports){

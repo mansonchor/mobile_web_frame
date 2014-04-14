@@ -11,8 +11,8 @@ define(function(require, exports)
 	var in_page = require('page_function/in')
 	var out_page = require('page_function/out')
 	
-	page_control.add_page(in_page)
-	page_control.add_page(out_page)
+	page_control.add_page([in_page,out_page])
+	
 	
 	page_control.route_start()
 })

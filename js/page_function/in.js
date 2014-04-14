@@ -3,11 +3,10 @@ define(function(require, exports)
 	var $ = require('zepto')
 	var page_control = require('page_control')
 	
-	exports.route = { "in": "in"  }
-
-	exports.new_page_entity = function()
+	function new_page_entity()
 	{
 		var options = {
+			route : { "in": "in"  },
 			transition_type : 'slide'
 		}
 		
@@ -17,19 +16,19 @@ define(function(require, exports)
 
 			this.$el.html('you can tap to another page')
 
-			alert('initialize')
+			alert('in page initialize')
 		}
 		
 
 		
 		options.page_before_show = function()
 		{
-			alert('page_before_show')
+			alert('in page_before_show')
 		}
 
 		options.page_show = function()
 		{
-			alert('page_show')
+			alert('in page_show')
 		}
 		
 		options.events = {
@@ -38,9 +37,9 @@ define(function(require, exports)
 				page_control.navigate_to_page("out")
 			}
 		}
-		     
-		var page = require('page').new_page(options);
 		
-		return page;
-	}	
+		return options
+	}
+		
+	return new_page_entity
 })

@@ -13,10 +13,7 @@ define(function(require, exports)
 	var demo3_page = require('scroll/demo3')
 	var lazyload_page = require('scroll/lazyload')
 	
-	page_control.add_page(index_page)
-	page_control.add_page(demo2_page)
-	page_control.add_page(demo3_page)
-	page_control.add_page(lazyload_page)
+	page_control.add_page([index_page,demo2_page,demo3_page,lazyload_page])
 	
 	page_control.route_start()
 })
