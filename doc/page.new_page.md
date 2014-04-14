@@ -4,6 +4,41 @@
 
 @**param** {json} options
 
+>{json} **route** ： 页面的路由配置，基础是[backbone的route][1]
+
+```javascript
+options.route = { "index": "index"  }
+```
+也可以组建带参数的url hash
+```javascript
+options.route = { "last/:art_id": "last"  }    //能匹配 #last/1000 等url hash
+
+options.route = { "cat/:cat_id/:art_id": "cat"  }    //能匹配 #cat/2/1000 等url hash
+```
+
+也可通过()设置非强制参数
+```javascript
+options.route = { "hot/(:is_big_img)": "hot"  }    //能匹配 #hot 和 #hot/true
+
+options.route = { "cat/:cat_id/(:art_id)": "cat"  }    //能匹配 #cat/2/1000 和 #cat/2
+```
+
+url参数可在页面的 `page_init` `page_show` 等监听下接收到
+
+```
+//页面路由配置
+options.route = { "last/:art_id": "last"  }
+
+options.page_init = function(page_view , params)
+{
+	//params是一个数组，依次是url传递的参数
+	var art_id = params[0]    //url的第一个参数，即art_id
+}
+
+return options
+
+```
+
 >{string}  **title** ： 路由到该页面时，浏览器的title显示
 
 >{bool}  **dom_not_cache** [defalut false]： 当前页面返回上一页面后，是否把该页从dom remove掉
