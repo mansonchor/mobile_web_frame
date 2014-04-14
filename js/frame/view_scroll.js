@@ -13,8 +13,6 @@ define("frame/view_scroll",["base_package","ua"],function(require, exports){
 		var cur_scroll_y = Math.abs(that.y)
 		var scroll_view_height = $(scroll_view_obj).height()
 
-		//console.log("scroll_view_height : " + scroll_view_height)
-		
 		$(scroll_view_obj).find('[lazyload_src]').each(function(i,img_obj)
 		{
 			var jq_img_obj = $(img_obj)
@@ -41,15 +39,13 @@ define("frame/view_scroll",["base_package","ua"],function(require, exports){
 		var options = that.options || {}
 		var view_height = options.view_height || "100%"
         var use_lazyload = options.use_lazyload || false
+        var bounce = options.bounce || false
 
         var scroll_end = options.scroll_end || function(){}
 		var scroll_start = options.scroll_start || function(){}
-		
-
+		    
         var hideScrollbar = options.hideScrollbar==null ? true : options.hideScrollbar
 
-		
-		
 		$(scroll_view_obj).css('height' , view_height+'px')
 
 		
@@ -62,7 +58,7 @@ define("frame/view_scroll",["base_package","ua"],function(require, exports){
 			
 			var myScroll = new iscroll_class($(scroll_view_obj)[0],{
 				checkDOMChanges : true,
-				bounce : false,
+				bounce : bounce,
 				hideScrollbar : hideScrollbar,
                 useTransform: true,
 				useTransition : false,
@@ -91,15 +87,9 @@ define("frame/view_scroll",["base_package","ua"],function(require, exports){
 		}
 		else
 		{
-			//req!!uire('view_scroll_css')                        
-            
 			$(scroll_view_obj).addClass('touch_scroll_css')
 		}
 
-		
-		
-
-		
 		//返回的对象
 		var scroll_obj = {}
 
@@ -125,6 +115,4 @@ define("frame/view_scroll",["base_package","ua"],function(require, exports){
 
 		return scroll_obj
 	}
-
-
 })

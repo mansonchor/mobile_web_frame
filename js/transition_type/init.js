@@ -1,4 +1,16 @@
-define(['base_package','frame_package','transition_type/index','transition_type/none','transition_type/slide','transition_type/slideup','transition_type/fade'],function(require, exports)
+seajs.config
+({
+	alias: 
+	{	
+		'index' : 'transition_type/index',
+		'none' : 'transition_type/none',
+		'slide' : 'transition_type/slide',
+		'slideup' : 'transition_type/slideup',
+		'fade' : 'transition_type/fade'
+    }
+})
+
+define(function(require, exports)
 {
 	var $ = require('zepto')
 	var page_control = require('page_control')
@@ -8,19 +20,13 @@ define(['base_package','frame_package','transition_type/index','transition_type/
 		default_index_route : "index"
 	})
 
-	var index_page = require('transition_type/index')
-	var none_page = require('transition_type/none')
-	var slide_page = require('transition_type/slide')
-	
-	var slideup_page = require('transition_type/slideup')
-	var fade_page = require('transition_type/fade')
+	var index_page = require('index')
+	var none_page = require('none')
+	var slide_page = require('slide')
+	var slideup_page = require('slideup')
+	var fade_page = require('fade')
 
-	page_control.add_page(index_page)
-	page_control.add_page(none_page)
-	page_control.add_page(slide_page)
-	page_control.add_page(slideup_page)
-	page_control.add_page(fade_page)
-
+	page_control.add_page([index_page,none_page,slide_page,slideup_page,fade_page])
 	
 	page_control.route_start()
 

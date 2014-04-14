@@ -3,11 +3,11 @@ define(function(require, exports)
 	var $ = require('zepto')
 	var page_control = require('page_control')
 	
-	exports.route = { "slideup": "slideup"  }
-
-	exports.new_page_entity = function()
+	
+	function new_page_entity()
 	{
 		var options = {
+			route : { "slideup": "slideup"  },
 			transition_type : 'slideup'
 		}
 
@@ -25,9 +25,9 @@ define(function(require, exports)
 				page_control.back()
 			}
 		}
-		     
-		var page = require('page').new_page(options);
 		
-		return page;
+		return options
 	}	
+
+	return new_page_entity
 })

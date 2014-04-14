@@ -3,11 +3,10 @@ define(function(require, exports)
 	var $ = require('zepto')
 	var page_control = require('page_control')
 	
-	exports.route = { "fade": "fade"  }
-
-	exports.new_page_entity = function()
+	function new_page_entity()
 	{
 		var options = {
+			route : { "fade": "fade"  },
 			transition_type : 'fade'
 		}
 
@@ -25,9 +24,9 @@ define(function(require, exports)
 				page_control.back()
 			}
 		}
-		     
-		var page = require('page').new_page(options);
 		
-		return page;
+		return options
 	}	
+
+	return new_page_entity
 })
