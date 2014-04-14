@@ -46,8 +46,11 @@ return options
 >{bool}  **ignore_exist** [defalut false]： 当路由到该页面已经存在时，是否忽略存在再另外新建一个页面
 
 这里几个情况要说明一下：
+
 1.一些静态的页面，创建了之后建议保留下来；需要每次动态获取数据的页面，可以设置成true
+
 2.当路由到一个页面时，框架会自动判断是否已经存在，假如存在将不会重新创建一个新页面，除非 **ignore_exist为true**
+
 3.路由到一个存在的页面时，**不会触发 page_init 监听**
 
 
@@ -114,6 +117,19 @@ options.events = {
 
 例如：手机横竖屏变化、某些浏览器导航条的折叠等，都会引发
 
+
+###**page_view和参数的触发回调**
+
+```javascript
+options.page_init = function(page_view , params , state)
+{
+    console.log(page_view)        //页面view
+    console.log(params)           //url hash参数
+    console.log(state)            //页面间传递的参数
+}
+```
+
+在 `page_init` `page_before_show` `page_show` `window_change` 的回调中，会带上参数，方便控制进行业务开发
 
   [1]: http://mansonchor.github.io/mobile_web_frame/demo/transition_type.html
   [2]: http://documentcloud.github.io/backbone/#View-extend
