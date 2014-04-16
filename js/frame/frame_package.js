@@ -244,7 +244,6 @@ define("frame/page_control",['base_package',"ua","frame_package"],function(requi
 				}
 			}
 		})
-
 	}
 
 	function get_current_url()
@@ -303,8 +302,8 @@ define("frame/page_control",['base_package',"ua","frame_package"],function(requi
 		{
 			if(have_exist && !page_options.ignore_exist)
 			{
-				var exist_view = SEARCH_PAGE_IN_BUFF(url_hash)
-
+				var exist_view = $(_ORIGINAL_CONTAINER).find('[page-url="'+url_hash+'"]').data('page-view')
+				
 				if(exist_view)
 				{
 					exist_view.$el.css({'top' : "0px"})
@@ -332,8 +331,12 @@ define("frame/page_control",['base_package',"ua","frame_package"],function(requi
 
 			if(have_exist)
 			{
-				var exist_buff = PAGE_HIS_BUFF[PAGE_HIS_BUFF.length - 1]
-				var exist_view = get_obj_key_value(exist_buff).value
+				//var exist_buff = PAGE_HIS_BUFF[PAGE_HIS_BUFF.length - 1]
+				//var exist_view = get_obj_key_value(exist_buff).value
+
+				var exist_view = $(_ORIGINAL_CONTAINER).find('[page-url="'+url_hash+'"]').data('page-view')
+				
+				//console.log('>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>' , exist_view)
 
 				_transit_page(_LAST_PAGE_VIEW , exist_view , _LAST_PAGE_VIEW.transition_type , true)
 
@@ -362,7 +365,9 @@ define("frame/page_control",['base_package',"ua","frame_package"],function(requi
 
 		var url_hash = get_current_url()
 
-		page_view.$el.attr('page-url',url_hash);
+		page_view.$el.attr('page-url',url_hash)
+		page_view.$el.data('page-view',page_view)
+
 		
 		//新建页面
 		page_view.$el.css({
@@ -695,7 +700,10 @@ define("frame/view_scroll",["base_package","ua"],function(require, exports){
 
         var scroll_end = options.scroll_end || function(){}
 		var scroll_start = options.scroll_start || function(){}
-		    
+        var scroll_move = options.scroll_move || function(){}
+        var scroll_refresh = options.scroll_refresh || function(){}
+        
+        var top_offset = options.top_offset?options.top_offset : 0
         var hideScrollbar = options.hideScrollbar==null ? true : options.hideScrollbar
 
 		$(scroll_view_obj).css('height' , view_height+'px')
@@ -708,12 +716,14 @@ define("frame/view_scroll",["base_package","ua"],function(require, exports){
 
 			$(scroll_view_obj).css({'position':'relative'})
 			
-			var myScroll = new iscroll_class($(scroll_view_obj)[0],{
+			var myScroll = new iscroll_class($(scroll_view_obj)[0],
+            {
 				checkDOMChanges : true,
 				bounce : bounce,
 				hideScrollbar : hideScrollbar,
                 useTransform: true,
 				useTransition : false,
+                topOffset : top_offset,
                 zoom: false,
 				onScrollEnd : function()
 				{
@@ -734,8 +744,24 @@ define("frame/view_scroll",["base_package","ua"],function(require, exports){
                     {
                         scroll_start.call(this,scroll_view_obj)
                     }
+				},
+				onScrollMove : function()
+				{
+                    
+				    if(typeof scroll_move == 'function')
+                    {
+                        scroll_move.call(this,scroll_view_obj)
+                    }
+				},
+				onRefresh : function ()
+				{
+				    if(typeof scroll_refresh == 'function')
+                    {
+                        scroll_refresh.call(this,scroll_view_obj)
+                    }
 				}
-			})		  			
+			})		  	
+	  			
 		}
 		else
 		{
@@ -764,6 +790,14 @@ define("frame/view_scroll",["base_package","ua"],function(require, exports){
 				myScroll.options.onScrollEnd()
 			}
 		}
+        
+        scroll_obj.refresh = function()
+        {
+            if(myScroll)
+			{
+				myScroll.refresh()
+			}
+        }
 
 		return scroll_obj
 	}
