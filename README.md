@@ -111,6 +111,7 @@ sea.js和seajs_config.js是seajs基础文件，sea.js版本建议使用2.0或以
 
 base目录里包含所有基础类库，frame目录是web app控制类
 
+
 seajs_config.js代码如下：
 ``` javascript
 seajs.config
