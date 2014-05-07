@@ -1,4 +1,4 @@
-define('base/ua',['base_package'],function(require, exports)
+define('base/ua',['zepto'],function(require, exports)
 {
 	var $ = require('zepto')
 
